@@ -2,34 +2,61 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QCM Pédagogie · Promotion interne OFPPT</title>
 <style>
-:root{--bg:#f5f6f8;--card:#fff;--tx:#1b2430;--mut:#5b6675;--bd:#dfe3e9;--pri:#0b5cab;--pri-t:#fff;--acc:#e8590c;--ok:#1b7f3b;--okbg:#e5f5ea;--ko:#b3261e;--kobg:#fdeaea;--warn:#8a5a00;--warnbg:#fff4d6;--bar:#e3e7ed}
-@media (prefers-color-scheme:dark){:root{--bg:#12171d;--card:#1b222b;--tx:#e8ecf1;--mut:#9aa6b4;--bd:#2c3642;--pri:#5aa2ee;--pri-t:#0b1620;--acc:#ff8a4c;--ok:#5fd18a;--okbg:#17321f;--ko:#ff8f87;--kobg:#3a1c1b;--warn:#f0c15a;--warnbg:#38300f;--bar:#2c3642}}
+:root{--bg:#f2f4fb;--card:#fff;--tx:#141c2b;--mut:#5b687c;--bd:#e0e5ef;--pri:#4f46e5;--pri2:#06b6d4;--pri-t:#fff;--acc:#f59e0b;--ok:#15803d;--okbg:#e6f6ec;--ko:#b91c1c;--kobg:#fdecec;--warn:#8a5a00;--warnbg:#fff3d1;--bar:#e3e8f2;--sh:0 8px 28px rgba(40,50,110,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--card:#151c30;--tx:#e8ecf6;--mut:#97a3ba;--bd:#27314a;--pri:#8b83ff;--pri2:#22d3ee;--pri-t:#0b1020;--acc:#fbbf24;--ok:#4ade80;--okbg:#10301d;--ko:#ff8c8c;--kobg:#3a1b1d;--warn:#f0c15a;--warnbg:#38300f;--bar:#27314a;--sh:0 8px 28px rgba(0,0,0,.35)}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:760px;margin:0 auto;padding:16px 14px 60px}
-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-header h1{font-size:1.05rem;margin:0;line-height:1.25}
-header h1 small{display:block;color:var(--mut);font-weight:400;font-size:.8rem}
-button{font:inherit;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:10px 14px}
-button:hover{border-color:var(--pri)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blobs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.30;animation:float 18s ease-in-out infinite}
+.blobs i:nth-child(1){width:340px;height:340px;background:var(--pri);top:-80px;left:-60px}
+.blobs i:nth-child(2){width:300px;height:300px;background:var(--pri2);bottom:-60px;right:-40px;animation-delay:-6s}
+.blobs i:nth-child(3){width:220px;height:220px;background:var(--acc);top:40%;left:55%;opacity:.14;animation-delay:-11s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}}
+.wrap{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:16px 14px 60px}
+.hero{background:linear-gradient(120deg,var(--pri),var(--pri2),var(--pri));background-size:220% 100%;animation:shine 9s linear infinite;color:#fff;border-radius:18px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:var(--sh)}
+@keyframes shine{to{background-position:220% 0}}
+.hero h1{font-size:1.1rem;margin:0;line-height:1.25;text-shadow:0 1px 6px rgba(0,0,0,.2)}
+.hero h1 small{display:block;font-weight:400;font-size:.8rem;opacity:.9}
+button{font:inherit;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;padding:10px 14px;transition:transform .15s,box-shadow .2s,border-color .2s,background .2s}
+button:hover:not(:disabled){border-color:var(--pri);transform:translateY(-2px);box-shadow:var(--sh)}
+button:active:not(:disabled){transform:translateY(0) scale(.98)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.opt:disabled{opacity:1}
 button:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
-button.pri{background:var(--pri);color:var(--pri-t);border-color:var(--pri);font-weight:600}
-button.sm{padding:6px 10px;font-size:.85rem}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:14px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.stat{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px;text-align:center}
-.stat b{display:block;font-size:1.5rem;line-height:1.2}
-.stat span{font-size:.78rem;color:var(--mut)}
+button.pri{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;border-color:transparent;font-weight:600}
+button.sm{padding:6px 11px;font-size:.85rem}
+.hero button{background:rgba(255,255,255,.18);color:#fff;border-color:rgba(255,255,255,.35);backdrop-filter:blur(6px)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:var(--sh)}
+.rise{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.dash{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center}
+.ring{position:relative;width:132px;height:132px}
+.ring svg{transform:rotate(-90deg)}
+.ring .tr{stroke:var(--bar)}
+.ring .pg{stroke:url(#g);stroke-linecap:round;transition:stroke-dashoffset 1.3s cubic-bezier(.2,.8,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:1.8rem}
+.ring b small{font-size:.9rem;opacity:.6}
+.lvl{display:inline-block;background:linear-gradient(135deg,var(--acc),#ef4444);color:#fff;font-weight:700;font-size:.8rem;border-radius:99px;padding:3px 12px;margin-bottom:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--bg);border-radius:12px;padding:8px;text-align:center}
+.stat b{display:block;font-size:1.35rem;line-height:1.2}
+.stat span{font-size:.74rem;color:var(--mut)}
+.best{margin-top:8px;font-size:.85rem;color:var(--mut)}
 .bar{height:8px;background:var(--bar);border-radius:99px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--ok);border-radius:99px;transition:width .3s}
-.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.modes button{text-align:left;padding:12px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--pri2));border-radius:99px;transition:width .6s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden}
+.bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:translateX(-100%);animation:sweep 2.2s infinite}
+@keyframes sweep{to{transform:translateX(100%)}}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-bottom:14px}
+.modes button{text-align:left;padding:14px;border-radius:16px;position:relative;overflow:hidden;animation:rise .5s both}
+.modes button .ic{font-size:1.4rem;display:block;margin-bottom:2px}
 .modes button b{display:block}
-.modes button span{font-size:.8rem;color:var(--mut)}
-.modes button.pri span{color:var(--pri-t);opacity:.85}
+.modes button span.d{font-size:.8rem;color:var(--mut)}
+.modes button.pri span.d{color:#fff;opacity:.9}
 .theme{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--bd)}
 .theme:first-of-type{border-top:0}
 .theme .nm{flex:1;min-width:0}
@@ -37,14 +64,23 @@ button.sm{padding:6px 10px;font-size:.85rem}
 .theme .nm small{color:var(--mut)}
 .theme .bar{margin-top:5px}
 .q{font-size:1.1rem;font-weight:600;margin:6px 0 14px}
-.meta{display:flex;justify-content:space-between;gap:8px;color:var(--mut);font-size:.82rem;margin-bottom:6px;flex-wrap:wrap}
-.opt{display:flex;gap:10px;width:100%;text-align:left;margin-bottom:8px;padding:12px;align-items:flex-start}
-.opt .k{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--bd);display:grid;place-items:center;font-size:.8rem;font-weight:700}
-.opt.ok{background:var(--okbg);border-color:var(--ok)}
-.opt.ko{background:var(--kobg);border-color:var(--ko)}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--mut);font-size:.82rem;margin-bottom:6px;flex-wrap:wrap;align-items:center}
+.streak{background:var(--warnbg);color:var(--warn);border-radius:99px;padding:2px 10px;font-weight:700}
+.streak.hot{animation:pulse .6s}
+@keyframes pulse{50%{transform:scale(1.25)}}
+.opt{display:flex;gap:10px;width:100%;text-align:left;margin-bottom:8px;padding:12px;align-items:flex-start;animation:rise .4s both}
+.opt:nth-child(2){animation-delay:.05s}.opt:nth-child(3){animation-delay:.1s}.opt:nth-child(4){animation-delay:.15s}
+.opt .k{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--bd);display:grid;place-items:center;font-size:.8rem;font-weight:700;transition:.2s}
+.opt:hover:not(:disabled) .k{background:var(--pri);color:#fff;border-color:var(--pri)}
+.opt.ok{background:var(--okbg);border-color:var(--ok);animation:pop .45s}
+.opt.ko{background:var(--kobg);border-color:var(--ko);animation:shake .45s}
+.opt.ok .k{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.ko .k{background:var(--ko);color:#fff;border-color:var(--ko)}
+@keyframes pop{40%{transform:scale(1.025)}}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .opt.sel{border-color:var(--pri);box-shadow:inset 0 0 0 1px var(--pri)}
-.opt:disabled{cursor:default;opacity:1;color:var(--tx)}
-.fb{border-radius:10px;padding:12px;margin:10px 0;font-size:.95rem}
+.opt:disabled{cursor:default;color:var(--tx)}
+.fb{border-radius:12px;padding:12px;margin:10px 0;font-size:.95rem;animation:rise .4s both}
 .fb.ok{background:var(--okbg);border-left:5px solid var(--ok)}
 .fb.ko{background:var(--kobg);border-left:5px solid var(--ko)}
 .tag{display:inline-block;font-size:.75rem;border-radius:99px;padding:2px 9px;margin-top:6px;background:var(--bar);color:var(--mut)}
@@ -54,115 +90,43 @@ button.sm{padding:6px 10px;font-size:.85rem}
 .grid button{width:38px;padding:6px 0;text-align:center;font-size:.85rem}
 .grid button.done{background:var(--pri);color:var(--pri-t);border-color:var(--pri)}
 .grid button.cur{outline:2px solid var(--acc)}
-.big{font-size:2.4rem;font-weight:800;text-align:center;margin:6px 0}
+.big{font-size:2.6rem;font-weight:800;text-align:center;margin:6px 0;background:linear-gradient(135deg,var(--pri),var(--pri2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .note{font-size:.8rem;color:var(--mut)}
 .err{border-top:1px solid var(--bd);padding:12px 0}
 .err:first-child{border-top:0}
-.flash{min-height:150px;display:grid;place-items:center;text-align:center;padding:10px}
+.flash{min-height:170px;display:grid;place-items:center;text-align:center;padding:10px;perspective:800px}
+.flash>div{animation:flipin .5s both}
+@keyframes flipin{from{opacity:0;transform:rotateX(70deg)}to{opacity:1;transform:none}}
 .timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--acc)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+.chip{border-radius:99px;padding:5px 12px;font-size:.82rem}
+.chip.on{background:var(--pri);color:var(--pri-t);border-color:var(--pri)}
+input.srch{width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+.mcard{border:1px solid var(--bd);border-radius:14px;padding:12px;margin:8px 0;background:var(--card);animation:rise .4s both}
+.mcard h4{margin:0 0 6px;font-size:1rem}
+.mcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:.9rem}
+.mcard dt{color:var(--mut)}.mcard dd{margin:0}
+.rule{background:var(--warnbg);color:var(--warn);border-radius:12px;padding:10px 12px;font-size:.9rem;margin-bottom:10px}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+@media(max-width:520px){.dash{grid-template-columns:1fr;justify-items:center;text-align:center}.stats{width:100%}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap">
-  <header>
+  <header class="hero">
     <h1>QCM Pédagogie · Promotion interne OFPPT<small>Sujets 2019-2020 · formateurs · 67 questions uniques</small></h1>
     <button id="homeBtn" class="sm" hidden>← Accueil</button>
   </header>
   <main id="app" aria-live="polite"></main>
   <p class="note">Les réponses sont établies par analyse pédagogique à partir de photos de sujets, pas à partir d’un corrigé officiel. Les questions marquées « à vérifier » méritent un contrôle avec ton cours.</p>
 </div>
-
+<canvas id="fx" aria-hidden="true"></canvas>
 <script>
-const THEMES={
-  role:'Rôle & qualités du formateur',
-  tri:'Triangle, courants & approches',
-  obj:'Objectifs pédagogiques',
-  prep:'Préparation & animation',
-  com:'Communication en classe',
-  eva:'Évaluation',
-  fad:'E-learning & FAD',
-  grp:'Apprenants & groupe'
-};
-const NS='Sujet sans en-tête';
-const Q=[
-/* --- Rôle, objectifs (sujet sans en-tête Q8-14) --- */
-{th:'role',s:NS,q:"Lequel des éléments ci-après ne relève pas du rôle du formateur ?",o:["Mettre en œuvre la formation","Mettre les apprenants en confiance","Établir l’emploi du temps des groupes en formation","Accompagner chaque apprenant de manière individuelle"],a:2,e:"L’emploi du temps des groupes relève de l’administration de l’établissement. Le formateur anime, met en confiance et accompagne."},
-{th:'role',s:NS,q:"Laquelle de ces fonctions permet au formateur de soutenir l’apprentissage de ses apprenants ?",o:["La fonction animation","La fonction ingénierie de formation","La fonction orientation","La fonction commerciale"],a:0,e:"L’ingénierie conçoit le dispositif ; l’animation met en œuvre la formation et soutient directement l’apprentissage."},
-{th:'obj',s:NS,q:"Un objectif de formation s’oppose à un objectif opérationnel dans le sens où…",o:["l’objectif de formation montre ce que l’apprenant devra maîtriser à la fin de la leçon.","l’objectif de formation contient des critères d’évaluation","l’objectif de formation montre ce que le formateur devra faire pour que les objectifs opérationnels soient atteints","l’objectif de formation précise les conditions d’exécution des activités"],a:2,e:"L’objectif de formation exprime l’intention générale (côté formateur/dispositif). L’objectif opérationnel décrit ce que l’apprenant saura faire, avec conditions et critères."},
-{th:'obj',s:NS,q:"Un objectif désigne…",o:["un résultat attendu","le point de départ d’une action","la méthode qu’on a choisie","le contenu de la formation"],a:0,e:"Un objectif énonce un résultat attendu, pas un point de départ, une méthode ou un contenu."},
-{th:'obj',s:NS,q:"Laquelle de ces propositions désigne une activité observable ?",o:["Observer une affiche de publicité","Penser aux règles d’hygiène et de sécurité dans les ateliers","Énumérer dans l’ordre les organes d’une machine à coudre","Juger la qualité des rapports de stage"],a:2,e:"« Énumérer » est un verbe d’action observable et mesurable. Observer, penser et juger restent des opérations mentales difficiles à vérifier."},
-{th:'obj',s:NS,q:"Quel est le domaine dont relèvent les activités développant une habileté manuelle ?",o:["Le domaine social","Le domaine psychomoteur","Le domaine culturel","Le domaine psychopédagogique"],a:1,e:"Les trois domaines d’objectifs : cognitif (savoir), affectif (savoir-être), psychomoteur (savoir-faire gestuel)."},
-{th:'obj',s:NS,q:"Un objectif de formation est lié à…",o:["une séquence de formation","une séance de formation","un cours","un cycle de formation"],a:3,e:"L’objectif de formation est général et terminal : il porte sur un cycle. Les objectifs opérationnels portent sur une séance ou une séquence."},
-/* --- 2020 12-15 V1 Q15-20 --- */
-{th:'fad',s:'2020 · 12-15 · V1',q:"En e-learning, une action de formation ponctuelle sur un sujet spécifique est appelée…",o:["formation ouverte","webinaire","digital training","blended learning"],a:1,e:"Le webinaire est une session en ligne ponctuelle sur un thème précis. Le blended learning mélange présentiel et distanciel."},
-{th:'tri',s:'2020 · 12-15 · V1',q:"À quelle notion correspond cette définition de Guy Vincent : « forme de relation qui tend à s’imposer notamment à toutes les manières de transmettre et d’apprendre, forme caractérisée par l’exercice, la répétition, la progression, etc. » ?",o:["Forme scolaire","Processus « enseigner »","Processus scolaire","Forme d’enseignement"],a:0,e:"La « forme scolaire » est la notion de Guy Vincent : un mode de relation pédagogique fondé sur l’exercice, la répétition et la progression."},
-{th:'tri',s:'2020 · 12-15 · V1',q:"La stimulation cognitive est une opération effectuée par le formateur dans…",o:["Des situations conflictuelles","Des situations motivantes","Des situations d’appréciation","Des situations de médiation"],a:0,e:"On stimule la cognition en créant un conflit cognitif (déséquilibre) qui pousse l’apprenant à remettre en question ses représentations.",c:'check'},
-{th:'tri',s:'2020 · 12-15 · V1',q:"Le modèle transmissif est un modèle basé sur…",o:["des cours ludiques","des cours magistraux","des exercices pratiques","des cours autonomes"],a:1,e:"Modèle transmissif : le formateur détient et transmet le savoir, typiquement par cours magistral."},
-{th:'tri',s:'2020 · 12-15 · V1',q:"Quelles sont les activités qui peuvent être associées à une approche constructiviste de l’apprentissage ?",o:["Laisser l’apprenant se tromper et lui donner le temps de comprendre la cause de ses erreurs","Évaluer les pré-requis et y remédier si nécessaire via une formation spécifique","Donner au formateur le rôle de faciliter l’apprentissage plus que de dispenser du savoir","Reléguer le formateur au rôle de transmetteur de savoirs"],a:0,e:"Constructivisme : l’apprenant construit son savoir ; l’erreur est une étape utile pour comprendre."},
-{th:'tri',s:'2020 · 12-15 · V1',q:"Le courant fonctionnaliste…",o:["part du principe que seul le formateur possède le savoir","considère qu’on peut faire évoluer le comportement d’un formé en le soumettant à des stimuli externes","considère le formateur comme un guide qui a pour tâche la réalisation des objectifs de la formation","représente le formateur comme un conseiller dont l’objectif est de développer l’autonomie des apprenants"],a:2,e:"Fonctionnaliste : le formateur est un guide au service des objectifs. (Traditionnel = savoir détenu par le maître ; comportementaliste = stimuli ; humaniste = conseiller/autonomie.)"},
-{th:'com',s:NS,q:"Le feedback des apprenants est un moyen qui contribue à l’efficacité de la communication en classe. Il permet au formateur…",o:["de réussir l’évaluation de son cours","de s’assurer de l’atteinte des objectifs","de vérifier si les apprenants ont compris ses propos","d’aider les apprenants à réaliser leurs activités"],a:2,e:"Le feedback boucle la communication : il montre si le message a été compris."},
-{th:'grp',s:NS,q:"Un groupe d’apprenants en interaction…",o:["permet de soutenir les moins avancés","freine la coopération","est basé sur l’égalité des niveaux de compétence","défavorise les plus timides"],a:0,e:"L’interaction favorise l’entraide et le tutorat entre pairs : les plus avancés soutiennent les moins avancés."},
-/* --- 2020 12-15 V1 Q8-14 --- */
-{th:'eva',s:'2020 · 12-15 · V1',q:"L’évaluation formative permet au formateur…",o:["de donner des notes afin de différencier entre les apprenants","de mieux aider les apprenants","de développer ses moyens pédagogiques et matériels","d’être mieux préparé pour les conseils de classes"],a:1,e:"Formative = en cours d’apprentissage, pour réguler et mieux aider l’apprenant, sans note de classement."},
-{th:'eva',s:'2020 · 12-15 · V1',q:"L’évaluation sommative consiste à…",o:["orienter les candidats à la formation vers des filières de formation","restituer de mémoire ce qui a été abordé","vérifier l’efficacité de l’acte pédagogique du formateur","sanctionner la formation"],a:3,e:"Sommative = bilan en fin de formation qui sanctionne (certifie) les acquis. L’orientation relève de l’évaluation diagnostique."},
-{th:'fad',s:'2020 · 12-15 · V1',q:"Parmi les actions suivantes, laquelle contribue de manière significative à la mise en œuvre d’une formation à distance ?",o:["La modification de l’ensemble des programmes de formation.","L’association des familles au déroulement des formations","La formation des formateurs sur les nouvelles technologies","L’implication des conseillers en orientation dans le processus de formation"],a:2,e:"Sans formateurs maîtrisant les outils numériques, la FAD ne peut pas être mise en œuvre."},
-{th:'fad',s:'2020 · 12-15 · V1',q:"Parmi les énoncés cités ci-après, lequel représente un inconvénient de l’utilisation du e-learning ?",o:["L’échec aux examens","Le sous-emploi des formateurs","La rupture des relations sociales formateur/apprenants et apprenants entre eux","La diminution des activités des établissements de formation"],a:2,e:"Principal inconvénient reconnu : l’isolement et la perte du lien social."},
-{th:'fad',s:'2020 · 12-15 · V1',q:"Pour un formateur, le e-learning permet…",o:["d’enseigner différemment","de gagner du temps","de minimiser son rôle en tant qu’animateur","de consolider ses relations avec les apprenants"],a:0,e:"Le e-learning change la façon d’enseigner (scénarios, outils, tutorat à distance) sans supprimer le rôle d’animateur."},
-{th:'fad',s:'2020 · 12-15 · V1',q:"Le bouleversement produit par le développement effréné de la formation à distance est principalement pédagogique, car il…",o:["transforme le rôle du formateur","s’appuie sur les nouvelles technologies","rend compliquées les modalités d’évaluation","implique l’administration dans la gestion de la formation"],a:0,e:"L’enjeu est pédagogique : le formateur passe de transmetteur à concepteur, tuteur et facilitateur."},
-{th:'fad',s:'2020 · 12-15 · V1',q:"Parmi les quatre avantages ci-après, lequel ne correspond pas à la formation asynchrone en e-learning ?",o:["L’opportunité de se former à son rythme en choisissant ses heures de cours","La possibilité de se former sans avoir besoin de se déplacer","La possibilité d’interagir instantanément en ligne avec le formateur et les autres apprenants","La possibilité de suivre en temps réel ses progressions"],a:2,e:"L’interaction instantanée caractérise le synchrone (classe virtuelle). L’asynchrone est en temps différé."},
-/* --- 2019 8-11 V3 Q1-5 (coches sur la photo) --- */
-{th:'tri',s:'2019 · 8-11 · V3',q:"La pédagogie active relève…",o:["du courant humaniste","du courant comportementaliste","du courant traditionnel","du courant fonctionnaliste"],a:3,e:"Réponse cochée sur ta feuille : courant fonctionnaliste.",c:'sheet'},
-{th:'role',s:'2019 · 8-11 · V3',q:"Un bon formateur est…",o:["d’abord un bon technicien","d’abord un bon pédagogue","un technicien et un pédagogue","un maître absolu"],a:2,e:"Il faut la double compétence : expertise technique du métier et compétence pédagogique pour la transmettre.",c:'sheet'},
-{th:'role',s:'2019 · 8-11 · V3',q:"Le formateur doit créer un climat de confiance afin de mettre à l’aise les apprenants et de renforcer leur intérêt pour la formation. Cette action passe principalement par le biais…",o:["des comportements professionnels du formateur","de l’instauration d’une discipline rigide en classe","de l’encouragement et de la valorisation des apprenants","de la rigueur dans l’application des règles de conduite"],a:2,e:"La confiance se construit par l’encouragement et la valorisation, pas par la rigidité. (Début d’énoncé partiellement coupé sur la photo.)",c:'sheet'},
-{th:'role',s:'2019 · 8-11 · V3',q:"Chaque apprenant doit prendre conscience du fait qu’il peut être formé… Dans ce cas, le formateur est là pour l’assister dans ses apprentissages. Le formateur joue le rôle…",o:["d’assistant","d’accompagnateur","de tuteur","de régulateur"],a:3,e:"Réponse cochée sur ta feuille : régulateur (il ajuste et régule l’apprentissage). « Accompagnateur » est la réponse concurrente à vérifier avec ton cours.",c:'sheet'},
-{th:'prep',s:'2019 · 8-11 · V3',q:"Tout le travail de préparation et d’organisation est du ressort du formateur… veiller à ce que tous les ingrédients nécessaires à la formation soient (réunis) pour les stagiaires. Ceci renvoie à…",o:["la gestion de la formation","la planification des cours","la mise en œuvre de la formation","l’évaluation de la formation"],a:2,e:"Réponse cochée sur ta feuille : mise en œuvre de la formation. (Énoncé partiellement coupé sur la photo.)",c:'sheet'},
-/* --- 2019 8-11 Q14-19 / Q21-27 --- */
-{th:'prep',s:'2019 · 8-11',q:"Comment appelle-t-on les connaissances antérieures déployées par les apprenants au début d’une séance de formation ?",o:["Les acquis","Les pré-acquis","Les schémas conceptuels","Les prérequis"],a:1,e:"Pré-acquis = ce que l’apprenant sait déjà avant la séance. Les prérequis sont le minimum exigé pour aborder l’activité.",c:'check'},
-{th:'prep',s:'2019 · 8-11',q:"L’acquisition d’un savoir-faire par les apprenants doit être organisée en tenant compte…",o:["d’une démonstration faite par le formateur","d’une démonstration faite par un apprenant","d’une activité à réaliser par tous les apprenants","d’un cours en classe et d’exercices pratiques hors classe"],a:2,e:"Un savoir-faire s’acquiert en faisant : l’organisation doit prévoir une activité de réalisation pour chaque apprenant.",c:'check'},
-{th:'prep',s:'2019 · 8-11',q:"Pour réaliser un cours, la préparation pédagogique élaborée par le formateur doit être adaptée…",o:["au contenu du cours","aux aides didactiques disponibles","au groupe d’apprenants","au contenu du cours et au groupe d’apprenants"],a:3,e:"Une bonne préparation prend en compte à la fois le contenu et le public visé."},
-{th:'com',s:'2019 · 8-11',q:"Les comportements non verbaux du formateur sont importants dans un cours parce qu’ils…",o:["donnent de la force à son discours","constituent un acte de distraction","renforcent la méthode pédagogique","éveillent la curiosité des apprenants"],a:0,e:"Gestes, regard, posture et voix renforcent et rendent crédible le message verbal."},
-{th:'grp',s:'2019 · 8-11',q:"Quelle est l’intention commune à un groupe d’apprenants ?",o:["Apprendre","Éduquer","Enseigner","Évaluer"],a:0,e:"Enseigner, éduquer et évaluer sont des actions du formateur ; l’intention commune des apprenants est d’apprendre."},
-{th:'role',s:'2019 · 8-11',q:"Les comportements sévères du formateur rendent la formation…",o:["plus rigoureuse","réglementée","démotivante pour les apprenants","très efficace"],a:2,e:"La sévérité excessive crée de la crainte et démotive."},
-{th:'com',s:'2019 · 8-11',q:"Parmi les comportements qui suivent, lequel doit être adopté par le formateur afin de favoriser l’efficacité de l’animation ?",o:["Plaire à l’auditoire","Savoir imposer ses points de vue","Veiller à ce que les participants effectuent les mêmes activités","Marginaliser les éléments perturbateurs"],a:0,e:"Seule option non contraire à l’esprit de l’animation : créer une relation positive. Les autres imposent, uniformisent ou excluent.",c:'check'},
-{th:'eva',s:'2019 · 8-11',q:"L’évaluation sommative est nécessaire pour…",o:["certifier des compétences","punir les mauvais comportements","réguler la formation","comparer entre les niveaux des apprenants"],a:0,e:"La sommative certifie les compétences en fin de parcours. Réguler = formative."},
-{th:'eva',s:'2019 · 8-11',q:"L’évaluation formative doit permettre à l’apprenant…",o:["d’avoir des notes","de se situer par rapport à l’atteinte de l’objectif","de se sentir valorisé","de passer d’une année de formation à l’année suivante"],a:1,e:"Formative = repérer où l’on en est par rapport à l’objectif, pour progresser."},
-/* --- Q21-26 --- */
-{th:'role',s:NS,q:"Sur le plan pédagogique, un formateur n’est pas seulement un transmetteur de connaissances, mais c’est aussi…",o:["un facilitateur de la construction des savoirs et savoir-faire","un expert dans sa matière","un tuteur pour les apprenants","un bon orateur"],a:0,e:"Le formateur moderne facilite la construction des savoirs par l’apprenant."},
-{th:'obj',s:NS,q:"Lorsqu’on définit un objectif, on doit indiquer…",o:["ce que le formateur fera pendant le cours","ce que l’apprenant fera après le cours","ce que le formateur fera avant le cours","ce que l’apprenant fera pendant le cours"],a:1,e:"Un objectif pédagogique décrit le comportement attendu de l’apprenant à l’issue de la séance.",c:'check'},
-{th:'obj',s:NS,q:"Lequel des éléments ci-après ne fait pas partie des composants de l’objectif pédagogique ?",o:["Le verbe opératoire","L’auteur de l’activité","Le produit ou résultat attendu","La méthode d’exécution"],a:3,e:"Composants : qui (apprenant), verbe d’action, produit attendu, conditions et critères. La méthode d’exécution n’en fait pas partie.",c:'check'},
-{th:'obj',s:NS,q:"On désigne souvent par « objectif opérationnel »…",o:["l’objectif de formation","l’objectif pédagogique","l’objectif séquentiel","l’objectif intermédiaire"],a:1,e:"Objectif opérationnel = objectif pédagogique (spécifique, observable, au niveau de la séance).",c:'check'},
-{th:'tri',s:NS,q:"La classe inversée (Flipped classroom) est une méthode pédagogique qui se caractérise par…",o:["de la théorie en classe et des exercices pratiques hors classe","de la théorie hors classe et des exercices pratiques en classe","de la théorie et des exercices pratiques en classe et des révisions hors classe","de la théorie et des exercices pratiques hors classe et des discussions en classe"],a:1,e:"On inverse : la théorie se découvre à la maison (vidéo, lecture), le temps de classe sert à pratiquer."},
-{th:'tri',s:NS,q:"Une démarche pédagogique expérientielle fait appel à…",o:["l’expérience du formateur","l’expérience du formateur et des apprenants","l’expérience des apprenants","l’expérience des chercheurs dans le domaine"],a:2,e:"Démarche expérientielle (Kolb) : on part du vécu et de l’expérience des apprenants.",c:'check'},
-/* --- 2019 Q22-28 --- */
-{th:'prep',s:'2019',q:"Lors de l’élaboration d’une séquence de formation, le formateur doit lier les objectifs de son cours…",o:["à ses propres connaissances","aux directives de l’administration","aux attentes des apprenants","au savoir, à l’expérience et au vécu des apprenants"],a:3,e:"On part de ce que l’apprenant sait et a vécu (constructivisme)."},
-{th:'prep',s:'2019',q:"La préparation pédagogique d’un cours est appelée aussi…",o:["fiche technique du cours","protocole d’animation","document d’animation","scénario pédagogique"],a:3,e:"Synonyme usuel : scénario pédagogique (déroulement prévu de la séance)."},
-{th:'prep',s:'2019',q:"Donner du sens à ce qu’on enseigne est l’un des éléments clés pour qu’une formation soit productive. Pour y parvenir le formateur doit…",o:["utiliser un langage savant","s’appuyer sur les représentations et les expériences des apprenants","laisser les apprenants donner eux-mêmes du sens à ce qu’ils apprennent","réduire la durée et le contenu de la séance"],a:1,e:"Le sens naît du lien avec les représentations et expériences de l’apprenant."},
-{th:'com',s:'2019',q:"En classe, la communication est efficace si…",o:["le formateur fait preuve de rigueur vis-à-vis des règles","le formateur offre de larges libertés aux apprenants","les apprenants interagissent les uns avec les autres","le formateur rejette certains points de vue qui ne concordent pas avec le thème du cours"],a:2,e:"Une communication efficace est multidirectionnelle : les apprenants échangent entre eux."},
-{th:'com',s:'2019',q:"Dans un cours, 93 % des messages du formateur sont véhiculés par le langage non verbal, à savoir le visuel et le vocal dont la répartition est…",o:["35 % pour le visuel et 58 % pour le vocal","65 % pour le visuel et 28 % pour le vocal","55 % pour le visuel et 38 % pour le vocal","45 % pour le visuel et 48 % pour le vocal"],a:2,e:"Règle de Mehrabian : 7 % verbal, 38 % vocal, 55 % visuel (55 + 38 = 93)."},
-{th:'com',s:'2019',q:"Lorsqu’il communique en classe, le formateur tient…",o:["à exposer et exhiber ses qualités d’orateur","à comprendre et se faire comprendre","à toujours imposer ses points de vue","à respecter la durée de la séance"],a:1,e:"Communiquer, c’est comprendre et se faire comprendre."},
-{th:'com',s:'2019',q:"En communication didactique, l’empathie du formateur consiste à…",o:["se mettre à la place de ses apprenants","analyser les comportements des apprenants","maîtriser ses émotions","faire preuve de fermeté envers les apprenants"],a:0,e:"Empathie = se mettre à la place de l’autre pour comprendre son point de vue."},
-/* --- 2019 12-15 V1 Q1-7 --- */
-{th:'tri',s:'2019 · 12-15 · V1',q:"Quels sont les trois processus dans le triangle pédagogique ?",o:["Enseigner / éduquer / travailler","Enseigner / former / apprendre","Enseigner / éduquer / former","Former / apprendre / éduquer"],a:1,e:"Triangle de Houssaye : enseigner (enseignant–savoir), former (enseignant–élève), apprendre (élève–savoir)."},
-{th:'grp',s:'2019 · 12-15 · V1',q:"La formation des adultes fait référence à…",o:["la formation professionnelle continue","la formation tout au long de la vie","la formation initiale","la formation résidentielle"],a:0,e:"La formation des adultes désigne classiquement la formation continue. « Tout au long de la vie » est plus large (concept de LLL).",c:'check'},
-{th:'tri',s:'2019 · 12-15 · V1',q:"L’enseignement couvre l’un des domaines ci-après. Lequel ?",o:["Le domaine du travail","Le domaine de l’apprentissage","Le domaine de la pédagogie","Le domaine de l’expérience"],a:2,e:"L’enseignement relève du champ de la pédagogie ; l’apprentissage relève de l’apprenant.",c:'check'},
-{th:'tri',s:'2019 · 12-15 · V1',q:"Comment s’appelle l’approche pédagogique consistant à impliquer l’apprenant dans son apprentissage ?",o:["Pédagogie de la décision","Pédagogie de l’imposition","Pédagogie active","Pédagogie du détour"],a:2,e:"Pédagogie active : l’apprenant agit, participe et construit."},
-{th:'prep',s:'2019 · 12-15 · V1',q:"En formation professionnelle, l’approche par compétences donne lieu à…",o:["des programmes de matières reliées entre elles","des modules distincts reliés entre eux à certains égards","des cursus indépendants les uns des autres","des unités de formation préparées par les formateurs"],a:1,e:"APC : programme découpé en modules distincts mais articulés autour de compétences."},
-{th:'prep',s:'2019 · 12-15 · V1',q:"Le choix des méthodes pédagogiques pour l’élaboration d’un cours nécessite de puiser dans…",o:["les courants pédagogiques","les approches pédagogiques","les cursus de formation","les modes de formation"],a:1,e:"Les méthodes se choisissent parmi les approches pédagogiques (active, par objectifs, par compétences…).",c:'check'},
-{th:'role',s:'2019 · 12-15 · V1',q:"Être un bon formateur c’est…",o:["avoir de bonnes relations avec les collègues","considérer les apprenants comme des amis","avoir des diplômes","donner le goût d’apprendre"],a:3,e:"Le cœur du métier : susciter la motivation et le goût d’apprendre."},
-/* --- 2020 12-15 V1 Q1-7 --- */
-{th:'grp',s:'2020 · 12-15 · V1',q:"Lorsque l’apprenant est motivé, il…",o:["ne se focalise pas sur les détails","pose des questions","ne tient pas compte des propos du formateur","saute certaines étapes du cours"],a:1,e:"Un apprenant motivé s’implique et questionne."},
-{th:'prep',s:'2020 · 12-15 · V1',q:"Parmi les énoncés qui suivent, lequel représente une attitude correcte à adopter par le formateur ?",o:["être sévère pour dominer le groupe","ne jamais admettre avoir commis une erreur","éviter les questions embarrassantes de certains apprenants","encourager la participation des apprenants"],a:3,e:"Encourager la participation est la seule attitude positive."},
-{th:'prep',s:'2020 · 12-15 · V1',q:"Lequel de ces quatre éléments ne fait pas partie des techniques d’animation ?",o:["Le questionnement","Le travail en groupe","La reformulation","L’encouragement"],a:1,e:"Questionnement, reformulation et encouragement (renforcement) sont des techniques d’animation. Le travail en groupe est une modalité pédagogique.",c:'check'},
-{th:'grp',s:'2020 · 12-15 · V1',q:"Un groupe d’apprenants n’apprécie pas chez le formateur…",o:["l’humour","la régulation","l’agressivité","la valorisation"],a:2,e:"L’agressivité est la seule attitude négative de la liste."},
-{th:'eva',s:'2020 · 12-15 · V1',q:"Laquelle de ces quatre propositions ne désigne pas une bonne évaluation ?",o:["L’évaluation des apprentissages permet de juger les apprenants","L’évaluation est nécessaire pour certifier que les objectifs ont bien été atteints","L’évaluation permet aux apprenants de se situer vis-à-vis des objectifs du cours","L’évaluation permet d’orienter vers des formations ciblées"],a:0,e:"Une bonne évaluation éclaire et certifie ; elle ne sert pas à « juger » les personnes."},
-{th:'eva',s:'2020 · 12-15 · V1',q:"Il faut un contrôle en fin de chaque séquence afin de vérifier si…",o:["les grandes lignes de la séquence ont bien été maîtrisées","les objectifs de la séquence ont été atteints","les apprenants sont satisfaits de ce qu’ils ont appris","le formateur a bien réalisé son cours"],a:1,e:"Le contrôle de fin de séquence vérifie l’atteinte des objectifs fixés."},
-{th:'eva',s:'2020 · 12-15 · V1',q:"L’évaluation permet à l’apprenant de…",o:["se comparer aux autres apprenants","plaire au formateur","constater ses améliorations","critiquer le cours du formateur"],a:2,e:"L’évaluation lui permet de mesurer ses progrès."},
-/* --- Q27-30 --- */
-{th:'prep',s:NS,q:"Préparer un cours c’est…",o:["se fixer des objectifs de contenus, sans tenir compte des prérequis, mais en prévoyant les obstacles/difficultés que l’apprenant peut rencontrer.","choisir les stratégies pédagogiques les plus adaptées au contenu","organiser le déroulement du cours qui permet la construction des apprentissages en tenant compte des prérequis","se limiter au savoir présenté dans le module de formation"],a:2,e:"Préparer = organiser un déroulement qui construit les apprentissages à partir des prérequis."},
-{th:'prep',s:NS,q:"Les pré-requis sont…",o:["les connaissances minimales que les apprenants doivent avoir pour aborder une activité","tous les cours ayant précédé celui dans lequel l’activité est abordée","les connaissances à découvrir juste avant de commencer le cours","les connaissances que le formateur doit aborder de temps à autre avec les apprenants"],a:0,e:"Pré-requis = connaissances minimales nécessaires pour aborder une activité."},
-{th:'eva',s:NS,q:"Lequel de ces quatre comportements est incompatible avec l’esprit de l’évaluation ?",o:["L’évaluation est utilisée pour asseoir l’autorité du formateur","L’évaluation sert au formateur pour mieux préparer ses cours futurs","À travers l’évaluation le formateur distingue les bons et les moins bons parmi ses apprenants","L’évaluation sert à sanctionner les éléments perturbateurs"],a:0,e:"Détourner l’évaluation pour asseoir son autorité est le contresens le plus net. Sanctionner les perturbateurs en est un autre : à vérifier avec ton cours.",c:'check'},
-{th:'eva',s:NS,q:"Pour un cours donné, il arrive que des apprentissages soient d’une importance telle que la non maîtrise de ceux-ci entraîne automatiquement un échec au contrôle. Que faut-il faire dans ce cas ?",o:["Refaire le contrôle","Organiser une séance de rattrapage","Ne pas réagir","Signaler le problème aux responsables pour prendre les mesures nécessaires"],a:1,e:"Remédiation : on organise un rattrapage sur les apprentissages essentiels non maîtrisés."}
-];
+const CFG={"key": "qcm-ofppt-v1", "exams": [{"n": 30, "m": 30, "label": "Examen blanc"}]};
+const THEMES={"role": "Rôle & qualités du formateur", "tri": "Triangle, courants & approches", "obj": "Objectifs pédagogiques", "prep": "Préparation & animation", "com": "Communication en classe", "eva": "Évaluation", "fad": "E-learning & FAD", "grp": "Apprenants & groupe"};
+const Q=[{"th": "role", "s": "Sujet sans en-tête", "q": "Lequel des éléments ci-après ne relève pas du rôle du formateur ?", "o": ["Mettre en œuvre la formation", "Mettre les apprenants en confiance", "Établir l’emploi du temps des groupes en formation", "Accompagner chaque apprenant de manière individuelle"], "a": 2, "e": "L’emploi du temps des groupes relève de l’administration de l’établissement. Le formateur anime, met en confiance et accompagne."}, {"th": "role", "s": "Sujet sans en-tête", "q": "Laquelle de ces fonctions permet au formateur de soutenir l’apprentissage de ses apprenants ?", "o": ["La fonction animation", "La fonction ingénierie de formation", "La fonction orientation", "La fonction commerciale"], "a": 0, "e": "L’ingénierie conçoit le dispositif ; l’animation met en œuvre la formation et soutient directement l’apprentissage."}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Un objectif de formation s’oppose à un objectif opérationnel dans le sens où…", "o": ["l’objectif de formation montre ce que l’apprenant devra maîtriser à la fin de la leçon.", "l’objectif de formation contient des critères d’évaluation", "l’objectif de formation montre ce que le formateur devra faire pour que les objectifs opérationnels soient atteints", "l’objectif de formation précise les conditions d’exécution des activités"], "a": 2, "e": "L’objectif de formation exprime l’intention générale (côté formateur/dispositif). L’objectif opérationnel décrit ce que l’apprenant saura faire, avec conditions et critères."}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Un objectif désigne…", "o": ["un résultat attendu", "le point de départ d’une action", "la méthode qu’on a choisie", "le contenu de la formation"], "a": 0, "e": "Un objectif énonce un résultat attendu, pas un point de départ, une méthode ou un contenu."}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Laquelle de ces propositions désigne une activité observable ?", "o": ["Observer une affiche de publicité", "Penser aux règles d’hygiène et de sécurité dans les ateliers", "Énumérer dans l’ordre les organes d’une machine à coudre", "Juger la qualité des rapports de stage"], "a": 2, "e": "« Énumérer » est un verbe d’action observable et mesurable. Observer, penser et juger restent des opérations mentales difficiles à vérifier."}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Quel est le domaine dont relèvent les activités développant une habileté manuelle ?", "o": ["Le domaine social", "Le domaine psychomoteur", "Le domaine culturel", "Le domaine psychopédagogique"], "a": 1, "e": "Les trois domaines d’objectifs : cognitif (savoir), affectif (savoir-être), psychomoteur (savoir-faire gestuel)."}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Un objectif de formation est lié à…", "o": ["une séquence de formation", "une séance de formation", "un cours", "un cycle de formation"], "a": 3, "e": "L’objectif de formation est général et terminal : il porte sur un cycle. Les objectifs opérationnels portent sur une séance ou une séquence."}, {"th": "fad", "s": "2020 · 12-15 · V1", "q": "En e-learning, une action de formation ponctuelle sur un sujet spécifique est appelée…", "o": ["formation ouverte", "webinaire", "digital training", "blended learning"], "a": 1, "e": "Le webinaire est une session en ligne ponctuelle sur un thème précis. Le blended learning mélange présentiel et distanciel."}, {"th": "tri", "s": "2020 · 12-15 · V1", "q": "À quelle notion correspond cette définition de Guy Vincent : « forme de relation qui tend à s’imposer notamment à toutes les manières de transmettre et d’apprendre, forme caractérisée par l’exercice, la répétition, la progression, etc. » ?", "o": ["Forme scolaire", "Processus « enseigner »", "Processus scolaire", "Forme d’enseignement"], "a": 0, "e": "La « forme scolaire » est la notion de Guy Vincent : un mode de relation pédagogique fondé sur l’exercice, la répétition et la progression."}, {"th": "tri", "s": "2020 · 12-15 · V1", "q": "La stimulation cognitive est une opération effectuée par le formateur dans…", "o": ["Des situations conflictuelles", "Des situations motivantes", "Des situations d’appréciation", "Des situations de médiation"], "a": 0, "e": "On stimule la cognition en créant un conflit cognitif (déséquilibre) qui pousse l’apprenant à remettre en question ses représentations.", "c": "check"}, {"th": "tri", "s": "2020 · 12-15 · V1", "q": "Le modèle transmissif est un modèle basé sur…", "o": ["des cours ludiques", "des cours magistraux", "des exercices pratiques", "des cours autonomes"], "a": 1, "e": "Modèle transmissif : le formateur détient et transmet le savoir, typiquement par cours magistral."}, {"th": "tri", "s": "2020 · 12-15 · V1", "q": "Quelles sont les activités qui peuvent être associées à une approche constructiviste de l’apprentissage ?", "o": ["Laisser l’apprenant se tromper et lui donner le temps de comprendre la cause de ses erreurs", "Évaluer les pré-requis et y remédier si nécessaire via une formation spécifique", "Donner au formateur le rôle de faciliter l’apprentissage plus que de dispenser du savoir", "Reléguer le formateur au rôle de transmetteur de savoirs"], "a": 0, "e": "Constructivisme : l’apprenant construit son savoir ; l’erreur est une étape utile pour comprendre."}, {"th": "tri", "s": "2020 · 12-15 · V1", "q": "Le courant fonctionnaliste…", "o": ["part du principe que seul le formateur possède le savoir", "considère qu’on peut faire évoluer le comportement d’un formé en le soumettant à des stimuli externes", "considère le formateur comme un guide qui a pour tâche la réalisation des objectifs de la formation", "représente le formateur comme un conseiller dont l’objectif est de développer l’autonomie des apprenants"], "a": 2, "e": "Fonctionnaliste : le formateur est un guide au service des objectifs. (Traditionnel = savoir détenu par le maître ; comportementaliste = stimuli ; humaniste = conseiller/autonomie.)"}, {"th": "com", "s": "Sujet sans en-tête", "q": "Le feedback des apprenants est un moyen qui contribue à l’efficacité de la communication en classe. Il permet au formateur…", "o": ["de réussir l’évaluation de son cours", "de s’assurer de l’atteinte des objectifs", "de vérifier si les apprenants ont compris ses propos", "d’aider les apprenants à réaliser leurs activités"], "a": 2, "e": "Le feedback boucle la communication : il montre si le message a été compris."}, {"th": "grp", "s": "Sujet sans en-tête", "q": "Un groupe d’apprenants en interaction…", "o": ["permet de soutenir les moins avancés", "freine la coopération", "est basé sur l’égalité des niveaux de compétence", "défavorise les plus timides"], "a": 0, "e": "L’interaction favorise l’entraide et le tutorat entre pairs : les plus avancés soutiennent les moins avancés."}, {"th": "eva", "s": "2020 · 12-15 · V1", "q": "L’évaluation formative permet au formateur…", "o": ["de donner des notes afin de différencier entre les apprenants", "de mieux aider les apprenants", "de développer ses moyens pédagogiques et matériels", "d’être mieux préparé pour les conseils de classes"], "a": 1, "e": "Formative = en cours d’apprentissage, pour réguler et mieux aider l’apprenant, sans note de classement."}, {"th": "eva", "s": "2020 · 12-15 · V1", "q": "L’évaluation sommative consiste à…", "o": ["orienter les candidats à la formation vers des filières de formation", "restituer de mémoire ce qui a été abordé", "vérifier l’efficacité de l’acte pédagogique du formateur", "sanctionner la formation"], "a": 3, "e": "Sommative = bilan en fin de formation qui sanctionne (certifie) les acquis. L’orientation relève de l’évaluation diagnostique."}, {"th": "fad", "s": "2020 · 12-15 · V1", "q": "Parmi les actions suivantes, laquelle contribue de manière significative à la mise en œuvre d’une formation à distance ?", "o": ["La modification de l’ensemble des programmes de formation.", "L’association des familles au déroulement des formations", "La formation des formateurs sur les nouvelles technologies", "L’implication des conseillers en orientation dans le processus de formation"], "a": 2, "e": "Sans formateurs maîtrisant les outils numériques, la FAD ne peut pas être mise en œuvre."}, {"th": "fad", "s": "2020 · 12-15 · V1", "q": "Parmi les énoncés cités ci-après, lequel représente un inconvénient de l’utilisation du e-learning ?", "o": ["L’échec aux examens", "Le sous-emploi des formateurs", "La rupture des relations sociales formateur/apprenants et apprenants entre eux", "La diminution des activités des établissements de formation"], "a": 2, "e": "Principal inconvénient reconnu : l’isolement et la perte du lien social."}, {"th": "fad", "s": "2020 · 12-15 · V1", "q": "Pour un formateur, le e-learning permet…", "o": ["d’enseigner différemment", "de gagner du temps", "de minimiser son rôle en tant qu’animateur", "de consolider ses relations avec les apprenants"], "a": 0, "e": "Le e-learning change la façon d’enseigner (scénarios, outils, tutorat à distance) sans supprimer le rôle d’animateur."}, {"th": "fad", "s": "2020 · 12-15 · V1", "q": "Le bouleversement produit par le développement effréné de la formation à distance est principalement pédagogique, car il…", "o": ["transforme le rôle du formateur", "s’appuie sur les nouvelles technologies", "rend compliquées les modalités d’évaluation", "implique l’administration dans la gestion de la formation"], "a": 0, "e": "L’enjeu est pédagogique : le formateur passe de transmetteur à concepteur, tuteur et facilitateur."}, {"th": "fad", "s": "2020 · 12-15 · V1", "q": "Parmi les quatre avantages ci-après, lequel ne correspond pas à la formation asynchrone en e-learning ?", "o": ["L’opportunité de se former à son rythme en choisissant ses heures de cours", "La possibilité de se former sans avoir besoin de se déplacer", "La possibilité d’interagir instantanément en ligne avec le formateur et les autres apprenants", "La possibilité de suivre en temps réel ses progressions"], "a": 2, "e": "L’interaction instantanée caractérise le synchrone (classe virtuelle). L’asynchrone est en temps différé."}, {"th": "tri", "s": "2019 · 8-11 · V3", "q": "La pédagogie active relève…", "o": ["du courant humaniste", "du courant comportementaliste", "du courant traditionnel", "du courant fonctionnaliste"], "a": 3, "e": "Réponse cochée sur ta feuille : courant fonctionnaliste.", "c": "sheet"}, {"th": "role", "s": "2019 · 8-11 · V3", "q": "Un bon formateur est…", "o": ["d’abord un bon technicien", "d’abord un bon pédagogue", "un technicien et un pédagogue", "un maître absolu"], "a": 2, "e": "Il faut la double compétence : expertise technique du métier et compétence pédagogique pour la transmettre.", "c": "sheet"}, {"th": "role", "s": "2019 · 8-11 · V3", "q": "Le formateur doit créer un climat de confiance afin de mettre à l’aise les apprenants et de renforcer leur intérêt pour la formation. Cette action passe principalement par le biais…", "o": ["des comportements professionnels du formateur", "de l’instauration d’une discipline rigide en classe", "de l’encouragement et de la valorisation des apprenants", "de la rigueur dans l’application des règles de conduite"], "a": 2, "e": "La confiance se construit par l’encouragement et la valorisation, pas par la rigidité. (Début d’énoncé partiellement coupé sur la photo.)", "c": "sheet"}, {"th": "role", "s": "2019 · 8-11 · V3", "q": "Chaque apprenant doit prendre conscience du fait qu’il peut être formé… Dans ce cas, le formateur est là pour l’assister dans ses apprentissages. Le formateur joue le rôle…", "o": ["d’assistant", "d’accompagnateur", "de tuteur", "de régulateur"], "a": 3, "e": "Réponse cochée sur ta feuille : régulateur (il ajuste et régule l’apprentissage). « Accompagnateur » est la réponse concurrente à vérifier avec ton cours.", "c": "sheet"}, {"th": "prep", "s": "2019 · 8-11 · V3", "q": "Tout le travail de préparation et d’organisation est du ressort du formateur… veiller à ce que tous les ingrédients nécessaires à la formation soient (réunis) pour les stagiaires. Ceci renvoie à…", "o": ["la gestion de la formation", "la planification des cours", "la mise en œuvre de la formation", "l’évaluation de la formation"], "a": 2, "e": "Réponse cochée sur ta feuille : mise en œuvre de la formation. (Énoncé partiellement coupé sur la photo.)", "c": "sheet"}, {"th": "prep", "s": "2019 · 8-11", "q": "Comment appelle-t-on les connaissances antérieures déployées par les apprenants au début d’une séance de formation ?", "o": ["Les acquis", "Les pré-acquis", "Les schémas conceptuels", "Les prérequis"], "a": 1, "e": "Pré-acquis = ce que l’apprenant sait déjà avant la séance. Les prérequis sont le minimum exigé pour aborder l’activité.", "c": "check"}, {"th": "prep", "s": "2019 · 8-11", "q": "L’acquisition d’un savoir-faire par les apprenants doit être organisée en tenant compte…", "o": ["d’une démonstration faite par le formateur", "d’une démonstration faite par un apprenant", "d’une activité à réaliser par tous les apprenants", "d’un cours en classe et d’exercices pratiques hors classe"], "a": 2, "e": "Un savoir-faire s’acquiert en faisant : l’organisation doit prévoir une activité de réalisation pour chaque apprenant.", "c": "check"}, {"th": "prep", "s": "2019 · 8-11", "q": "Pour réaliser un cours, la préparation pédagogique élaborée par le formateur doit être adaptée…", "o": ["au contenu du cours", "aux aides didactiques disponibles", "au groupe d’apprenants", "au contenu du cours et au groupe d’apprenants"], "a": 3, "e": "Une bonne préparation prend en compte à la fois le contenu et le public visé."}, {"th": "com", "s": "2019 · 8-11", "q": "Les comportements non verbaux du formateur sont importants dans un cours parce qu’ils…", "o": ["donnent de la force à son discours", "constituent un acte de distraction", "renforcent la méthode pédagogique", "éveillent la curiosité des apprenants"], "a": 0, "e": "Gestes, regard, posture et voix renforcent et rendent crédible le message verbal."}, {"th": "grp", "s": "2019 · 8-11", "q": "Quelle est l’intention commune à un groupe d’apprenants ?", "o": ["Apprendre", "Éduquer", "Enseigner", "Évaluer"], "a": 0, "e": "Enseigner, éduquer et évaluer sont des actions du formateur ; l’intention commune des apprenants est d’apprendre."}, {"th": "role", "s": "2019 · 8-11", "q": "Les comportements sévères du formateur rendent la formation…", "o": ["plus rigoureuse", "réglementée", "démotivante pour les apprenants", "très efficace"], "a": 2, "e": "La sévérité excessive crée de la crainte et démotive."}, {"th": "com", "s": "2019 · 8-11", "q": "Parmi les comportements qui suivent, lequel doit être adopté par le formateur afin de favoriser l’efficacité de l’animation ?", "o": ["Plaire à l’auditoire", "Savoir imposer ses points de vue", "Veiller à ce que les participants effectuent les mêmes activités", "Marginaliser les éléments perturbateurs"], "a": 0, "e": "Seule option non contraire à l’esprit de l’animation : créer une relation positive. Les autres imposent, uniformisent ou excluent.", "c": "check"}, {"th": "eva", "s": "2019 · 8-11", "q": "L’évaluation sommative est nécessaire pour…", "o": ["certifier des compétences", "punir les mauvais comportements", "réguler la formation", "comparer entre les niveaux des apprenants"], "a": 0, "e": "La sommative certifie les compétences en fin de parcours. Réguler = formative."}, {"th": "eva", "s": "2019 · 8-11", "q": "L’évaluation formative doit permettre à l’apprenant…", "o": ["d’avoir des notes", "de se situer par rapport à l’atteinte de l’objectif", "de se sentir valorisé", "de passer d’une année de formation à l’année suivante"], "a": 1, "e": "Formative = repérer où l’on en est par rapport à l’objectif, pour progresser."}, {"th": "role", "s": "Sujet sans en-tête", "q": "Sur le plan pédagogique, un formateur n’est pas seulement un transmetteur de connaissances, mais c’est aussi…", "o": ["un facilitateur de la construction des savoirs et savoir-faire", "un expert dans sa matière", "un tuteur pour les apprenants", "un bon orateur"], "a": 0, "e": "Le formateur moderne facilite la construction des savoirs par l’apprenant."}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Lorsqu’on définit un objectif, on doit indiquer…", "o": ["ce que le formateur fera pendant le cours", "ce que l’apprenant fera après le cours", "ce que le formateur fera avant le cours", "ce que l’apprenant fera pendant le cours"], "a": 1, "e": "Un objectif pédagogique décrit le comportement attendu de l’apprenant à l’issue de la séance.", "c": "check"}, {"th": "obj", "s": "Sujet sans en-tête", "q": "Lequel des éléments ci-après ne fait pas partie des composants de l’objectif pédagogique ?", "o": ["Le verbe opératoire", "L’auteur de l’activité", "Le produit ou résultat attendu", "La méthode d’exécution"], "a": 3, "e": "Composants : qui (apprenant), verbe d’action, produit attendu, conditions et critères. La méthode d’exécution n’en fait pas partie.", "c": "check"}, {"th": "obj", "s": "Sujet sans en-tête", "q": "On désigne souvent par « objectif opérationnel »…", "o": ["l’objectif de formation", "l’objectif pédagogique", "l’objectif séquentiel", "l’objectif intermédiaire"], "a": 1, "e": "Objectif opérationnel = objectif pédagogique (spécifique, observable, au niveau de la séance).", "c": "check"}, {"th": "tri", "s": "Sujet sans en-tête", "q": "La classe inversée (Flipped classroom) est une méthode pédagogique qui se caractérise par…", "o": ["de la théorie en classe et des exercices pratiques hors classe", "de la théorie hors classe et des exercices pratiques en classe", "de la théorie et des exercices pratiques en classe et des révisions hors classe", "de la théorie et des exercices pratiques hors classe et des discussions en classe"], "a": 1, "e": "On inverse : la théorie se découvre à la maison (vidéo, lecture), le temps de classe sert à pratiquer."}, {"th": "tri", "s": "Sujet sans en-tête", "q": "Une démarche pédagogique expérientielle fait appel à…", "o": ["l’expérience du formateur", "l’expérience du formateur et des apprenants", "l’expérience des apprenants", "l’expérience des chercheurs dans le domaine"], "a": 2, "e": "Démarche expérientielle (Kolb) : on part du vécu et de l’expérience des apprenants.", "c": "check"}, {"th": "prep", "s": "2019", "q": "Lors de l’élaboration d’une séquence de formation, le formateur doit lier les objectifs de son cours…", "o": ["à ses propres connaissances", "aux directives de l’administration", "aux attentes des apprenants", "au savoir, à l’expérience et au vécu des apprenants"], "a": 3, "e": "On part de ce que l’apprenant sait et a vécu (constructivisme)."}, {"th": "prep", "s": "2019", "q": "La préparation pédagogique d’un cours est appelée aussi…", "o": ["fiche technique du cours", "protocole d’animation", "document d’animation", "scénario pédagogique"], "a": 3, "e": "Synonyme usuel : scénario pédagogique (déroulement prévu de la séance)."}, {"th": "prep", "s": "2019", "q": "Donner du sens à ce qu’on enseigne est l’un des éléments clés pour qu’une formation soit productive. Pour y parvenir le formateur doit…", "o": ["utiliser un langage savant", "s’appuyer sur les représentations et les expériences des apprenants", "laisser les apprenants donner eux-mêmes du sens à ce qu’ils apprennent", "réduire la durée et le contenu de la séance"], "a": 1, "e": "Le sens naît du lien avec les représentations et expériences de l’apprenant."}, {"th": "com", "s": "2019", "q": "En classe, la communication est efficace si…", "o": ["le formateur fait preuve de rigueur vis-à-vis des règles", "le formateur offre de larges libertés aux apprenants", "les apprenants interagissent les uns avec les autres", "le formateur rejette certains points de vue qui ne concordent pas avec le thème du cours"], "a": 2, "e": "Une communication efficace est multidirectionnelle : les apprenants échangent entre eux."}, {"th": "com", "s": "2019", "q": "Dans un cours, 93 % des messages du formateur sont véhiculés par le langage non verbal, à savoir le visuel et le vocal dont la répartition est…", "o": ["35 % pour le visuel et 58 % pour le vocal", "65 % pour le visuel et 28 % pour le vocal", "55 % pour le visuel et 38 % pour le vocal", "45 % pour le visuel et 48 % pour le vocal"], "a": 2, "e": "Règle de Mehrabian : 7 % verbal, 38 % vocal, 55 % visuel (55 + 38 = 93)."}, {"th": "com", "s": "2019", "q": "Lorsqu’il communique en classe, le formateur tient…", "o": ["à exposer et exhiber ses qualités d’orateur", "à comprendre et se faire comprendre", "à toujours imposer ses points de vue", "à respecter la durée de la séance"], "a": 1, "e": "Communiquer, c’est comprendre et se faire comprendre."}, {"th": "com", "s": "2019", "q": "En communication didactique, l’empathie du formateur consiste à…", "o": ["se mettre à la place de ses apprenants", "analyser les comportements des apprenants", "maîtriser ses émotions", "faire preuve de fermeté envers les apprenants"], "a": 0, "e": "Empathie = se mettre à la place de l’autre pour comprendre son point de vue."}, {"th": "tri", "s": "2019 · 12-15 · V1", "q": "Quels sont les trois processus dans le triangle pédagogique ?", "o": ["Enseigner / éduquer / travailler", "Enseigner / former / apprendre", "Enseigner / éduquer / former", "Former / apprendre / éduquer"], "a": 1, "e": "Triangle de Houssaye : enseigner (enseignant–savoir), former (enseignant–élève), apprendre (élève–savoir)."}, {"th": "grp", "s": "2019 · 12-15 · V1", "q": "La formation des adultes fait référence à…", "o": ["la formation professionnelle continue", "la formation tout au long de la vie", "la formation initiale", "la formation résidentielle"], "a": 0, "e": "La formation des adultes désigne classiquement la formation continue. « Tout au long de la vie » est plus large (concept de LLL).", "c": "check"}, {"th": "tri", "s": "2019 · 12-15 · V1", "q": "L’enseignement couvre l’un des domaines ci-après. Lequel ?", "o": ["Le domaine du travail", "Le domaine de l’apprentissage", "Le domaine de la pédagogie", "Le domaine de l’expérience"], "a": 2, "e": "L’enseignement relève du champ de la pédagogie ; l’apprentissage relève de l’apprenant.", "c": "check"}, {"th": "tri", "s": "2019 · 12-15 · V1", "q": "Comment s’appelle l’approche pédagogique consistant à impliquer l’apprenant dans son apprentissage ?", "o": ["Pédagogie de la décision", "Pédagogie de l’imposition", "Pédagogie active", "Pédagogie du détour"], "a": 2, "e": "Pédagogie active : l’apprenant agit, participe et construit."}, {"th": "prep", "s": "2019 · 12-15 · V1", "q": "En formation professionnelle, l’approche par compétences donne lieu à…", "o": ["des programmes de matières reliées entre elles", "des modules distincts reliés entre eux à certains égards", "des cursus indépendants les uns des autres", "des unités de formation préparées par les formateurs"], "a": 1, "e": "APC : programme découpé en modules distincts mais articulés autour de compétences."}, {"th": "prep", "s": "2019 · 12-15 · V1", "q": "Le choix des méthodes pédagogiques pour l’élaboration d’un cours nécessite de puiser dans…", "o": ["les courants pédagogiques", "les approches pédagogiques", "les cursus de formation", "les modes de formation"], "a": 1, "e": "Les méthodes se choisissent parmi les approches pédagogiques (active, par objectifs, par compétences…).", "c": "check"}, {"th": "role", "s": "2019 · 12-15 · V1", "q": "Être un bon formateur c’est…", "o": ["avoir de bonnes relations avec les collègues", "considérer les apprenants comme des amis", "avoir des diplômes", "donner le goût d’apprendre"], "a": 3, "e": "Le cœur du métier : susciter la motivation et le goût d’apprendre."}, {"th": "grp", "s": "2020 · 12-15 · V1", "q": "Lorsque l’apprenant est motivé, il…", "o": ["ne se focalise pas sur les détails", "pose des questions", "ne tient pas compte des propos du formateur", "saute certaines étapes du cours"], "a": 1, "e": "Un apprenant motivé s’implique et questionne."}, {"th": "prep", "s": "2020 · 12-15 · V1", "q": "Parmi les énoncés qui suivent, lequel représente une attitude correcte à adopter par le formateur ?", "o": ["être sévère pour dominer le groupe", "ne jamais admettre avoir commis une erreur", "éviter les questions embarrassantes de certains apprenants", "encourager la participation des apprenants"], "a": 3, "e": "Encourager la participation est la seule attitude positive."}, {"th": "prep", "s": "2020 · 12-15 · V1", "q": "Lequel de ces quatre éléments ne fait pas partie des techniques d’animation ?", "o": ["Le questionnement", "Le travail en groupe", "La reformulation", "L’encouragement"], "a": 1, "e": "Questionnement, reformulation et encouragement (renforcement) sont des techniques d’animation. Le travail en groupe est une modalité pédagogique.", "c": "check"}, {"th": "grp", "s": "2020 · 12-15 · V1", "q": "Un groupe d’apprenants n’apprécie pas chez le formateur…", "o": ["l’humour", "la régulation", "l’agressivité", "la valorisation"], "a": 2, "e": "L’agressivité est la seule attitude négative de la liste."}, {"th": "eva", "s": "2020 · 12-15 · V1", "q": "Laquelle de ces quatre propositions ne désigne pas une bonne évaluation ?", "o": ["L’évaluation des apprentissages permet de juger les apprenants", "L’évaluation est nécessaire pour certifier que les objectifs ont bien été atteints", "L’évaluation permet aux apprenants de se situer vis-à-vis des objectifs du cours", "L’évaluation permet d’orienter vers des formations ciblées"], "a": 0, "e": "Une bonne évaluation éclaire et certifie ; elle ne sert pas à « juger » les personnes."}, {"th": "eva", "s": "2020 · 12-15 · V1", "q": "Il faut un contrôle en fin de chaque séquence afin de vérifier si…", "o": ["les grandes lignes de la séquence ont bien été maîtrisées", "les objectifs de la séquence ont été atteints", "les apprenants sont satisfaits de ce qu’ils ont appris", "le formateur a bien réalisé son cours"], "a": 1, "e": "Le contrôle de fin de séquence vérifie l’atteinte des objectifs fixés."}, {"th": "eva", "s": "2020 · 12-15 · V1", "q": "L’évaluation permet à l’apprenant de…", "o": ["se comparer aux autres apprenants", "plaire au formateur", "constater ses améliorations", "critiquer le cours du formateur"], "a": 2, "e": "L’évaluation lui permet de mesurer ses progrès."}, {"th": "prep", "s": "Sujet sans en-tête", "q": "Préparer un cours c’est…", "o": ["se fixer des objectifs de contenus, sans tenir compte des prérequis, mais en prévoyant les obstacles/difficultés que l’apprenant peut rencontrer.", "choisir les stratégies pédagogiques les plus adaptées au contenu", "organiser le déroulement du cours qui permet la construction des apprentissages en tenant compte des prérequis", "se limiter au savoir présenté dans le module de formation"], "a": 2, "e": "Préparer = organiser un déroulement qui construit les apprentissages à partir des prérequis."}, {"th": "prep", "s": "Sujet sans en-tête", "q": "Les pré-requis sont…", "o": ["les connaissances minimales que les apprenants doivent avoir pour aborder une activité", "tous les cours ayant précédé celui dans lequel l’activité est abordée", "les connaissances à découvrir juste avant de commencer le cours", "les connaissances que le formateur doit aborder de temps à autre avec les apprenants"], "a": 0, "e": "Pré-requis = connaissances minimales nécessaires pour aborder une activité."}, {"th": "eva", "s": "Sujet sans en-tête", "q": "Lequel de ces quatre comportements est incompatible avec l’esprit de l’évaluation ?", "o": ["L’évaluation est utilisée pour asseoir l’autorité du formateur", "L’évaluation sert au formateur pour mieux préparer ses cours futurs", "À travers l’évaluation le formateur distingue les bons et les moins bons parmi ses apprenants", "L’évaluation sert à sanctionner les éléments perturbateurs"], "a": 0, "e": "Détourner l’évaluation pour asseoir son autorité est le contresens le plus net. Sanctionner les perturbateurs en est un autre : à vérifier avec ton cours.", "c": "check"}, {"th": "eva", "s": "Sujet sans en-tête", "q": "Pour un cours donné, il arrive que des apprentissages soient d’une importance telle que la non maîtrise de ceux-ci entraîne automatiquement un échec au contrôle. Que faut-il faire dans ce cas ?", "o": ["Refaire le contrôle", "Organiser une séance de rattrapage", "Ne pas réagir", "Signaler le problème aux responsables pour prendre les mesures nécessaires"], "a": 1, "e": "Remédiation : on organise un rattrapage sur les apprentissages essentiels non maîtrisés."}];
 Q.forEach((q,i)=>{q.id=i+1;q.c=q.c||'ok'});
 const QM={};Q.forEach(q=>QM[q.id]=q);
 
@@ -171,65 +135,92 @@ const $=s=>document.querySelector(s);
 const app=$('#app'),homeBtn=$('#homeBtn');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LET=['a','b','c','d'];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-const KEY='qcm-ofppt-v1';
-let P={};
+const KEY=CFG.key;let P={},META={best:0};
 try{P=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){P={}}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}};
+try{META=Object.assign(META,JSON.parse(localStorage.getItem(KEY+'-meta')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P));localStorage.setItem(KEY+'-meta',JSON.stringify(META))}catch(e){}};
 function rec(id,ok){const p=P[id]||(P[id]={b:0,n:0,w:0,l:1});p.n++;if(ok){p.b=Math.min(2,p.b+1);p.l=1}else{p.w++;p.b=0;p.l=0}save()}
 const isMastered=id=>P[id]&&P[id].b>=2;
 const isWrong=id=>P[id]&&P[id].l===0;
 const allIds=Q.map(q=>q.id);
 const idsOf=th=>th?Q.filter(q=>q.th===th).map(q=>q.id):allIds;
-function stats(ids){return{n:ids.length,m:ids.filter(isMastered).length,s:ids.filter(i=>P[i]).length,w:ids.filter(isWrong).length}}
+const stats=ids=>({n:ids.length,m:ids.filter(isMastered).length,s:ids.filter(i=>P[i]).length,w:ids.filter(isWrong).length});
 function pick(ids,n){
   const g=[[],[],[],[]];
   ids.forEach(id=>{const p=P[id];g[!p?1:p.l===0?0:p.b>=2?3:2].push(id)});
   return shuffle(g.flatMap(shuffle).slice(0,n));
 }
+function countUp(el,to,suffix,dur){
+  if(!el)return;suffix=suffix||'';
+  if(reduce){el.textContent=to+suffix;return}
+  const t0=performance.now();dur=dur||900;
+  (function f(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=Math.round(to*e)+suffix;if(k<1)requestAnimationFrame(f)})(t0);
+}
+/* ---------- confettis ---------- */
+const cv=$('#fx'),cx=cv.getContext('2d');let parts=[],run=false;
+function fit(){cv.width=innerWidth;cv.height=innerHeight}fit();addEventListener('resize',fit);
+function burst(n,x,y){
+  if(reduce)return;const cols=['#4f46e5','#06b6d4','#f59e0b','#ef4444','#22c55e','#a855f7'];
+  x=x==null?cv.width/2:x;y=y==null?cv.height/3:y;
+  for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=3+Math.random()*7;parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,r:3+Math.random()*4,c:cols[i%cols.length],l:90+Math.random()*50,rot:Math.random()*6})}
+  if(!run){run=true;requestAnimationFrame(loop)}
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts=parts.filter(p=>p.l>0);
+  parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.22;p.vx*=.99;p.l--;p.rot+=.2;cx.save();cx.globalAlpha=Math.min(1,p.l/30);cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillStyle=p.c;cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore()});
+  if(parts.length)requestAnimationFrame(loop);else{run=false;cx.clearRect(0,0,cv.width,cv.height)}
+}
 
 let S=null,timer=null;
-function stopTimer(){if(timer){clearInterval(timer);timer=null}}
+const stopTimer=()=>{if(timer){clearInterval(timer);timer=null}};
+const LEVELS=[[100,'Maître 🏆'],[75,'Expert ⭐'],[50,'Confirmé 🚀'],[25,'Apprenti 📘'],[0,'Débutant 🌱']];
+const levelOf=p=>LEVELS.find(l=>p>=l[0])[1];
 
 /* ---------- accueil ---------- */
 function home(){
   stopTimer();S=null;homeBtn.hidden=true;
-  const t=stats(allIds),pct=Math.round(100*t.m/t.n);
+  const t=stats(allIds),pct=Math.round(100*t.m/t.n),C=2*Math.PI*54;
+  const ex=CFG.exams.map((e,i)=>`<button data-a="exam" data-n="${e.n}" data-m="${e.m}" style="animation-delay:${.1+i*.05}s"><span class="ic">⏱️</span><b>${e.label}</b><span class="d">${e.n} questions · ${e.m} min</span></button>`).join('');
   app.innerHTML=`
-  <div class="stats">
-    <div class="stat"><b>${t.m}/${t.n}</b><span>maîtrisées</span></div>
-    <div class="stat"><b>${t.s}</b><span>déjà vues</span></div>
-    <div class="stat"><b>${t.w}</b><span>à revoir</span></div>
-  </div>
-  <div class="card"><div class="meta"><span>Maîtrise globale</span><span>${pct} %</span></div>
-    <div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>
-    <p class="note" style="margin:8px 0 0">Une question est « maîtrisée » après 2 bonnes réponses d’affilée. Une erreur la remet à zéro.</p></div>
+  <section class="card dash rise">
+    <div class="ring"><svg width="132" height="132" viewBox="0 0 132 132"><defs><linearGradient id="g"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><circle class="tr" cx="66" cy="66" r="54" fill="none" stroke-width="12"/><circle class="pg" cx="66" cy="66" r="54" fill="none" stroke-width="12" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><b><span id="pc">0</span><small>%</small></b></div>
+    <div><span class="lvl">${levelOf(pct)}</span>
+      <div class="stats"><div class="stat"><b id="s1">0</b><span>maîtrisées / ${t.n}</span></div><div class="stat"><b id="s2">0</b><span>déjà vues</span></div><div class="stat"><b id="s3">0</b><span>à revoir</span></div></div>
+      <div class="best">🔥 Meilleure série : <b>${META.best}</b> · maîtrisée = 2 bonnes réponses d’affilée</div></div>
+  </section>
   <div class="modes">
-    <button class="pri" data-a="practice"><b>Entraînement</b><span>10 questions, correction immédiate</span></button>
-    <button data-a="exam"><b>Examen blanc</b><span>30 questions · 30 min · note finale</span></button>
-    <button data-a="errors" ${t.w?'':'disabled'}><b>Mes erreurs (${t.w})</b><span>Rejouer ce qui a échoué</span></button>
-    <button data-a="cards"><b>Fiches</b><span>Réviser sans pression</span></button>
+    <button class="pri" data-a="practice" style="animation-delay:.05s"><span class="ic">🎯</span><b>Entraînement</b><span class="d">10 questions, correction immédiate</span></button>
+    ${ex}
+    <button data-a="errors" ${t.w?'':'disabled'} style="animation-delay:.2s"><span class="ic">🔁</span><b>Mes erreurs (${t.w})</b><span class="d">Rejouer ce qui a échoué</span></button>
+    <button data-a="cards" style="animation-delay:.25s"><span class="ic">🗂️</span><b>Fiches</b><span class="d">Réviser sans pression</span></button>
+    ${CFG.memo?`<button data-a="memo" style="animation-delay:.3s"><span class="ic">📖</span><b>Mémento</b><span class="d">Tableaux de synthèse du cours</span></button>`:''}
   </div>
-  <div class="card"><b>Par thème</b>
+  <div class="card rise"><b>Par thème</b>
     ${Object.keys(THEMES).map(k=>{const s=stats(idsOf(k)),p=Math.round(100*s.m/s.n);return`
-    <div class="theme"><div class="nm"><b>${THEMES[k]}</b><small>${s.m}/${s.n} maîtrisées${s.w?` · ${s.w} à revoir`:''}</small><div class="bar"><i style="width:${p}%"></i></div></div>
+    <div class="theme"><div class="nm"><b>${esc(THEMES[k])}</b><small>${s.m}/${s.n} maîtrisées${s.w?` · ${s.w} à revoir`:''}</small><div class="bar"><i style="width:${p}%"></i></div></div>
     <button class="sm" data-a="practice" data-th="${k}">Pratiquer</button><button class="sm" data-a="cards" data-th="${k}">Fiches</button></div>`}).join('')}
   </div>
   <p><button id="reset" class="sm">Réinitialiser ma progression</button></p>`;
-  app.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>start(b.dataset.a,b.dataset.th));
+  app.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>start(b.dataset.a,b.dataset.th,+b.dataset.n,+b.dataset.m));
   const r=$('#reset');let armed=false;
-  r.onclick=()=>{if(!armed){armed=true;r.textContent='Cliquer à nouveau pour confirmer';return}P={};save();home()};
+  r.onclick=()=>{if(!armed){armed=true;r.textContent='Cliquer à nouveau pour confirmer';return}P={};META.best=0;save();home()};
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{const pg=app.querySelector('.pg');pg.style.strokeDashoffset=C*(1-pct/100)}));
+  countUp($('#pc'),pct);countUp($('#s1'),t.m);countUp($('#s2'),t.s);countUp($('#s3'),t.w);
 }
 homeBtn.onclick=home;
 
-/* ---------- démarrage des sessions ---------- */
-function start(mode,th){
+/* ---------- démarrage ---------- */
+function start(mode,th,n,m){
   stopTimer();homeBtn.hidden=false;
+  if(mode==='memo'){S=null;return memo()}
   if(mode==='practice')S={mode,th,list:pick(idsOf(th),th?Math.min(10,idsOf(th).length):10)};
   else if(mode==='errors')S={mode,list:shuffle(allIds.filter(isWrong))};
-  else if(mode==='exam'){S={mode,list:shuffle(allIds).slice(0,30),end:Date.now()+30*60000};timer=setInterval(tick,1000)}
+  else if(mode==='exam'){S={mode,n,m,list:shuffle(allIds).slice(0,n||30),end:Date.now()+(m||30)*60000};timer=setInterval(tick,1000)}
   else if(mode==='cards'){const l=idsOf(th);const todo=l.filter(i=>!isMastered(i));S={mode,th,list:shuffle(todo.length?todo:l),flip:false}}
-  S.i=0;S.ans=[];S.ord=[];
+  S.i=0;S.ans=[];S.ord=[];S.streak=0;
   mode==='cards'?showCard():showQ();
 }
 function tick(){
@@ -242,20 +233,19 @@ function tick(){
 function showQ(){
   const s=S,q=QM[s.list[s.i]],exam=s.mode==='exam';
   if(!s.ord[s.i])s.ord[s.i]=shuffle([0,1,2,3]);
-  const ord=s.ord[s.i],ans=s.ans[s.i],done=!exam&&ans!==undefined;
-  const last=s.i===s.list.length-1;
+  const ord=s.ord[s.i],ans=s.ans[s.i],done=!exam&&ans!==undefined,last=s.i===s.list.length-1;
   app.innerHTML=`
-  <div class="card">
-    <div class="meta"><span>Question ${s.i+1}/${s.list.length} · ${THEMES[q.th]}</span>${exam?`<span class="timer" id="tm"></span>`:`<span>${esc(q.s)}</span>`}</div>
-    <div class="bar" style="margin-bottom:10px"><i style="width:${100*(s.i+(done?1:0))/s.list.length}%;background:var(--pri)"></i></div>
+  <div class="card ${done?'':'rise'}">
+    <div class="meta"><span>Question ${s.i+1}/${s.list.length} · ${esc(THEMES[q.th])}</span>
+      ${exam?`<span class="timer" id="tm"></span>`:`<span>${s.streak>1?`<span class="streak">🔥 ${s.streak}</span> `:''}${esc(q.s)}</span>`}</div>
+    <div class="bar" style="margin-bottom:10px"><i style="width:${100*(s.i+(done?1:0))/s.list.length}%"></i></div>
     <div class="q">${esc(q.q)}</div>
     <div id="opts">${ord.map((k,pos)=>{
       let cls='';
-      if(done){if(k===q.a)cls='ok';else if(k===ans)cls='ko'}
-      else if(exam&&ans===k)cls='sel';
+      if(done){if(k===q.a)cls='ok';else if(k===ans)cls='ko'}else if(exam&&ans===k)cls='sel';
       const mark=done?(k===q.a?'✓':k===ans?'✗':LET[pos]):LET[pos];
       return`<button class="opt ${cls}" data-k="${k}" ${done?'disabled':''}><span class="k">${mark}</span><span>${esc(q.o[k])}</span></button>`}).join('')}</div>
-    ${done?`<div class="fb ${ans===q.a?'ok':'ko'}" role="status"><b>${ans===q.a?'Bonne réponse.':'Pas tout à fait.'}</b> ${ans===q.a?'':`Bonne réponse : <b>${esc(q.o[q.a])}</b>.<br>`}${esc(q.e)}
+    ${done?`<div class="fb ${ans===q.a?'ok':'ko'}" role="status"><b>${ans===q.a?'Bonne réponse !':'Pas tout à fait.'}</b> ${ans===q.a?'':`Bonne réponse : <b>${esc(q.o[q.a])}</b>.<br>`}${esc(q.e)}
       ${q.c==='check'?'<br><span class="tag check">⚠ réponse à vérifier avec ton cours</span>':''}${q.c==='sheet'?'<br><span class="tag">coche relevée sur ta photo</span>':''}</div>`:''}
     <div class="row">
       ${exam?`<button id="prev" ${s.i?'':'disabled'}>← Précédente</button>`:'<span></span>'}
@@ -263,7 +253,7 @@ function showQ(){
     </div>
     ${exam?`<div class="grid">${s.list.map((_,i)=>`<button class="${s.ans[i]!==undefined?'done':''} ${i===s.i?'cur':''}" data-g="${i}" aria-label="Question ${i+1}">${i+1}</button>`).join('')}</div>`:''}
   </div>`;
-  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k));
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k,b));
   const n=$('#next');if(n){n.onclick=next;if(done)n.focus()}
   const p=$('#prev');if(p)p.onclick=()=>{s.i--;showQ()};
   app.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{s.i=+b.dataset.g;showQ()});
@@ -271,9 +261,13 @@ function showQ(){
 }
 function choose(k){
   const s=S,q=QM[s.list[s.i]];
-  if(s.mode!=='exam'){if(s.ans[s.i]!==undefined)return;s.ans[s.i]=k;rec(q.id,k===q.a)}
-  else s.ans[s.i]=k;
-  showQ();
+  if(s.mode!=='exam'){
+    if(s.ans[s.i]!==undefined)return;s.ans[s.i]=k;const ok=k===q.a;rec(q.id,ok);
+    if(ok){s.streak++;if(s.streak>META.best){META.best=s.streak;save()}}else s.streak=0;
+    showQ();
+    if(ok){const o=app.querySelector('.opt.ok');if(o){const r=o.getBoundingClientRect();burst(s.streak%5===0?60:14,r.left+r.width/2,r.top)}}
+    const st=app.querySelector('.streak');if(st&&s.streak>1)st.classList.add('hot');
+  }else{s.ans[s.i]=k;showQ()}
 }
 function next(){if(S.i<S.list.length-1){S.i++;showQ()}else finish()}
 
@@ -285,33 +279,58 @@ function finish(){
   const res=s.list.map((id,i)=>({q:QM[id],a:s.ans[i]}));
   const ok=res.filter(r=>r.a===r.q.a).length,tot=res.length,pct=Math.round(100*ok/tot);
   const wrong=res.filter(r=>r.a!==r.q.a);
-  const verdict=pct>=80?'Très bien, tu es prêt.':pct>=60?'Correct, continue sur les erreurs.':'À retravailler : reprends les erreurs ci-dessous.';
+  const verdict=pct>=80?'Excellent, tu maîtrises ! 🎉':pct>=60?'Correct, continue sur les erreurs. 💪':'À retravailler : reprends les erreurs ci-dessous. 📚';
   app.innerHTML=`
-  <div class="card"><div class="meta"><span>${exam?'Résultat de l’examen blanc':'Bilan de la session'}</span></div>
-    <div class="big">${ok}/${tot} <span style="font-size:1.1rem;color:var(--mut)">(${pct} %)</span></div>
+  <div class="card rise"><div class="meta"><span>${exam?'Résultat de l’examen':'Bilan de la session'}</span></div>
+    <div class="big"><span id="sc">0</span>/${tot} <span style="font-size:1.1rem;-webkit-text-fill-color:var(--mut)">(<span id="sp">0</span> %)</span></div>
+    <div class="bar" style="margin:6px 0 10px"><i style="width:${pct}%"></i></div>
     <p style="text-align:center;margin:0">${verdict}</p>
     <div class="row" style="justify-content:center"><button class="pri" id="again">Recommencer</button><button id="gohome">Accueil</button></div>
   </div>
-  ${wrong.length?`<div class="card"><b>À revoir (${wrong.length})</b>${wrong.map(r=>`
-    <div class="err"><div class="note">${THEMES[r.q.th]}</div><div><b>${esc(r.q.q)}</b></div>
-    ${r.a!==undefined?`<div style="color:var(--ko)">✗ Ta réponse : ${esc(r.q.o[r.a])}</div>`:`<div style="color:var(--ko)">✗ Sans réponse</div>`}
+  ${wrong.length?`<div class="card rise"><b>À revoir (${wrong.length})</b>${wrong.map(r=>`
+    <div class="err"><div class="note">${esc(THEMES[r.q.th])}</div><div><b>${esc(r.q.q)}</b></div>
+    <div style="color:var(--ko)">✗ ${r.a!==undefined?'Ta réponse : '+esc(r.q.o[r.a]):'Sans réponse'}</div>
     <div style="color:var(--ok)">✓ ${esc(r.q.o[r.q.a])}</div><div class="note">${esc(r.q.e)}</div>
     ${r.q.c==='check'?'<span class="tag check">⚠ à vérifier avec ton cours</span>':''}</div>`).join('')}</div>`:''}`;
-  $('#again').onclick=()=>start(s.mode,s.th);$('#gohome').onclick=home;
+  $('#again').onclick=()=>start(s.mode,s.th,s.n,s.m);$('#gohome').onclick=home;
+  countUp($('#sc'),ok);countUp($('#sp'),pct);
+  if(pct>=80)setTimeout(()=>{burst(140);setTimeout(()=>burst(90,cv.width*.2,cv.height*.4),300);setTimeout(()=>burst(90,cv.width*.8,cv.height*.4),500)},350);
 }
 
 /* ---------- fiches ---------- */
 function showCard(){
   const s=S;
-  if(s.i>=s.list.length){app.innerHTML=`<div class="card"><div class="big">Terminé</div><p style="text-align:center">Tu as parcouru les ${s.list.length} fiches.</p><div class="row" style="justify-content:center"><button class="pri" id="again">Recommencer</button><button id="gohome">Accueil</button></div></div>`;$('#again').onclick=()=>start('cards',s.th);$('#gohome').onclick=home;return}
+  if(s.i>=s.list.length){app.innerHTML=`<div class="card rise"><div class="big">Terminé 🎉</div><p style="text-align:center">Tu as parcouru les ${s.list.length} fiches.</p><div class="row" style="justify-content:center"><button class="pri" id="again">Recommencer</button><button id="gohome">Accueil</button></div></div>`;$('#again').onclick=()=>start('cards',s.th);$('#gohome').onclick=home;burst(80);return}
   const q=QM[s.list[s.i]];
-  app.innerHTML=`<div class="card">
-    <div class="meta"><span>Fiche ${s.i+1}/${s.list.length} · ${THEMES[q.th]}</span><span>${esc(q.s)}</span></div>
+  app.innerHTML=`<div class="card rise">
+    <div class="meta"><span>Fiche ${s.i+1}/${s.list.length} · ${esc(THEMES[q.th])}</span><span>${esc(q.s)}</span></div>
+    <div class="bar" style="margin-bottom:6px"><i style="width:${100*s.i/s.list.length}%"></i></div>
     <div class="flash"><div>${s.flip?`<div class="note">Réponse</div><div class="q" style="color:var(--ok)">${esc(q.o[q.a])}</div><div>${esc(q.e)}</div>${q.c==='check'?'<span class="tag check">⚠ à vérifier avec ton cours</span>':''}`:`<div class="q">${esc(q.q)}</div><div class="note">Réfléchis, puis retourne la fiche.</div>`}</div></div>
     <div class="row">${s.flip?`<button id="no">À revoir</button><button class="pri" id="yes">Je savais</button>`:`<span></span><button class="pri" id="flip">Voir la réponse</button>`}</div></div>`;
   const go=ok=>{rec(q.id,ok);s.i++;s.flip=false;showCard()};
   if(s.flip){$('#yes').onclick=()=>go(true);$('#no').onclick=()=>go(false)}
   else $('#flip').onclick=()=>{s.flip=true;showCard()};
+}
+
+/* ---------- mémento ---------- */
+function memo(){
+  const M=CFG.memo;let f='all',term='';
+  const draw=()=>{
+    const secs=M.sections.map((sec,si)=>{
+      if(f!=='all'&&f!==String(si))return'';
+      const rows=sec.rows.filter(r=>!term||r.join(' ').toLowerCase().includes(term));
+      return rows.length?`<h3 style="margin:16px 0 4px">${esc(sec.title)}</h3>`+rows.map((r,ri)=>`<div class="mcard" style="animation-delay:${ri*.04}s"><h4>${esc(r[0])}</h4><dl>${sec.cols.slice(1).map((c,i)=>`<dt>${esc(c)}</dt><dd>${esc(r[i+1])}</dd>`).join('')}</dl></div>`).join(''):'';
+    }).join('');
+    $('#mbody').innerHTML=secs||'<p class="note">Aucun résultat.</p>';
+  };
+  app.innerHTML=`<div class="card rise"><b>📖 Mémento</b>
+    <div class="rule">${esc(M.rule)}</div>
+    <input class="srch" id="srch" placeholder="Rechercher (auteur, mot-clé…)" aria-label="Rechercher dans le mémento">
+    <div class="chips"><button class="chip sm on" data-f="all">Tout</button>${M.sections.map((s,i)=>`<button class="chip sm" data-f="${i}">${esc(s.title)}</button>`).join('')}</div>
+    <div id="mbody"></div></div>`;
+  draw();
+  $('#srch').oninput=e=>{term=e.target.value.trim().toLowerCase();draw()};
+  app.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{f=b.dataset.f;app.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));draw()});
 }
 
 /* ---------- clavier ---------- */
@@ -324,7 +343,6 @@ document.addEventListener('keydown',e=>{
   if((k==='enter'||k==='arrowright')&&$('#next')){e.preventDefault();$('#next').click()}
   else if(k==='arrowleft'&&$('#prev'))$('#prev').click();
 });
-
 home();
 </script>
 </body>

@@ -2,49 +2,130 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Auteurs Thématiques 1 à 12 · QCM et Flashcards · Concours OFPPT</title>
-<meta name="description" content="QCM et flashcards pour mémoriser les auteurs des 12 thématiques pédagogiques du concours de promotion interne OFPPT.">
-<meta name="theme-color" content="#9E1B32">
+<title>Concours OFPPT · Centre de révision</title>
+<meta name="description" content="QCM, flashcards et mémento pour préparer le concours de promotion interne OFPPT (corps formateur).">
+<meta name="theme-color" content="#0b1020">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--primary:#9E1B32;--navy:#1F3A5F;--line:#E1E4E8;--bg:#F8F9FA;--muted:#5C6670}
+:root{--bg:#0b1020;--bg2:#1a1245;--glass:rgba(255,255,255,.07);--gl2:rgba(255,255,255,.12);--line:rgba(255,255,255,.14);--tx:#eef1fb;--mut:#a9b3cc;--a:#8b83ff;--b:#22d3ee;--c:#f59e0b;--nav:58px}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{display:flex;flex-direction:column;background:var(--bg);font-family:Inter,Roboto,"Segoe UI",system-ui,sans-serif;color:#212529}
-.nav{flex:none;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(0,0,0,.02)}
-.nav-in{max-width:920px;margin:0 auto;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
-.mark{width:34px;height:34px;border-radius:8px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
-.bt{font-weight:700;font-size:15px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bs{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tabs{display:flex;gap:6px;flex:none}
-.tab{appearance:none;border:1.5px solid var(--line);background:#fff;color:#212529;font:600 14px Inter,sans-serif;padding:8px 14px;border-radius:10px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.tab:hover{border-color:#C0C5CB;background:#FAFAFB}
-.tab[aria-selected=true]{background:var(--primary);border-color:var(--primary);color:#fff}
-.tab small{font-weight:500;opacity:.8;font-size:12px}
-:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
-.views{flex:1;min-height:0;position:relative}
-iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg);display:none}
-iframe.on{display:block}
-@media(max-width:640px){.brand{display:none}.nav-in{padding:8px 10px}.tabs{width:100%}.tab{flex:1;justify-content:center;padding:9px 8px;font-size:13px}.tab small{display:none}}
+body{display:flex;flex-direction:column;background:radial-gradient(1200px 700px at 15% -10%,#2a1c78 0%,transparent 60%),radial-gradient(900px 600px at 100% 110%,#073b4c 0%,transparent 55%),var(--bg);color:var(--tx);font-family:Inter,system-ui,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.nav{position:relative;z-index:5;flex:none;height:var(--nav);background:rgba(11,16,32,.7);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;height:100%;padding:0 16px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;flex:none;cursor:pointer;background:none;border:0;color:inherit;font:inherit;padding:0}
+.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;font-weight:800;color:#0b1020;box-shadow:0 0 22px rgba(139,131,255,.55);animation:glow 3.5s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 34px rgba(34,211,238,.75)}}
+.bt{font-weight:700;font-size:15px;line-height:1.1}.bs{font-size:11px;color:var(--mut)}
+.tabs{position:relative;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end}
+.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;background:none;border:0;color:var(--mut);font:600 13.5px Inter,sans-serif;padding:9px 12px;border-radius:10px;cursor:pointer;white-space:nowrap;text-decoration:none;position:relative;z-index:1;transition:color .2s}
+.tab:hover{color:#fff}
+.tab[aria-selected=true]{color:#fff}
+.tab small{opacity:.65;font-weight:500;margin-left:3px;font-size:11px}
+.ind{position:absolute;bottom:3px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--a),var(--b));transition:left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px var(--b)}
+:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.main{flex:1;min-height:0;position:relative;z-index:2}
+.view{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(12px) scale(.99);transition:opacity .35s,transform .35s,visibility .35s}
+.view.on{opacity:1;visibility:visible;transform:none}
+#home{overflow-y:auto;padding:28px 16px 40px}
+.hub{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--b);background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);border-radius:99px;padding:5px 12px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--b);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.2}}
+h1.title{font-size:clamp(2rem,5.4vw,3.6rem);line-height:1.08;margin:16px 0 10px;font-weight:800;letter-spacing:-.02em}
+.grad{background:linear-gradient(100deg,#fff 0%,var(--a) 35%,var(--b) 70%,#fff 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gmove 7s linear infinite}
+@keyframes gmove{to{background-position:250% 0}}
+.type{font-size:clamp(1rem,2.2vw,1.3rem);color:var(--mut);min-height:1.8em}
+.type b{color:#fff;font-weight:600}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--b);vertical-align:-3px;margin-left:2px;animation:blink 1s infinite}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 26px}
+.btn{font:600 14.5px Inter,sans-serif;border-radius:12px;padding:12px 20px;border:1px solid var(--line);background:var(--glass);color:#fff;cursor:pointer;transition:transform .2s,box-shadow .25s,background .2s;backdrop-filter:blur(8px)}
+.btn:hover{transform:translateY(-3px);background:var(--gl2)}
+.btn.p{background:linear-gradient(135deg,var(--a),var(--b));color:#0b1020;border:0;box-shadow:0 10px 30px rgba(34,211,238,.28)}
+.btn.p:hover{box-shadow:0 14px 38px rgba(139,131,255,.5)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:26px}
+.kpi{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:14px 16px;backdrop-filter:blur(10px)}
+.kpi b{display:block;font-size:2rem;font-weight:800;line-height:1.1}
+.kpi span{font-size:12px;color:var(--mut)}
+.sec{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:6px 0 12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.cd{--rx:0deg;--ry:0deg;--mx:50%;--my:50%;position:relative;text-align:left;font:inherit;color:inherit;cursor:pointer;background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:18px;backdrop-filter:blur(12px);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .15s ease-out,border-color .25s,box-shadow .3s;overflow:hidden;opacity:0;animation:up .6s cubic-bezier(.2,.8,.2,1) forwards;text-decoration:none;display:block}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1}}
+.cd::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(139,131,255,.28),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.cd:hover{border-color:rgba(139,131,255,.7);box-shadow:0 18px 50px rgba(20,10,80,.55)}
+.cd:hover::before{opacity:1}
+.cd .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:23px;background:linear-gradient(135deg,rgba(139,131,255,.35),rgba(34,211,238,.25));border:1px solid var(--line)}
+.cd h3{margin:12px 0 4px;font-size:1.1rem}
+.cd p{margin:0 0 12px;color:var(--mut);font-size:.9rem;line-height:1.45}
+.cd .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{font-size:11.5px;font-weight:600;border-radius:99px;padding:3px 10px;background:rgba(255,255,255,.1);color:#dfe5f7}
+.pill.go{background:rgba(34,211,238,.16);color:var(--b)}
+.rg{width:54px;height:54px;flex:none;position:relative}
+.rg svg{transform:rotate(-90deg)}
+.rg .t{stroke:rgba(255,255,255,.12)}
+.rg .p{stroke:url(#rg);stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)}
+.rg b{position:absolute;inset:0;display:grid;place-items:center;font-size:12px}
+.rg.na{display:none}
+.foot{margin:30px 0 0;text-align:center;color:var(--mut);font-size:12px}
+/* stage */
+.frame{position:absolute;inset:10px;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 20px 70px rgba(0,0,0,.55),0 0 0 1px var(--line)}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#f8f9fa;display:none;opacity:0}
+iframe.on{display:block;animation:fadein .45s forwards}
+@keyframes fadein{to{opacity:1}}
+.loader{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,#0b1020,#1a1245);z-index:3;transition:opacity .4s,visibility .4s}
+.loader.off{opacity:0;visibility:hidden}
+.spin{width:46px;height:46px;border-radius:50%;border:4px solid rgba(255,255,255,.15);border-top-color:var(--b);animation:rot .9s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+@media(max-width:700px){.brand .tx{display:none}.nav-in{padding:0 8px;gap:6px}.tab{padding:9px 10px;font-size:13px}.tab small{display:none}.frame{inset:4px;border-radius:12px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.cd{opacity:1}}
 </style>
 </head>
 <body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="rg"><stop offset="0" stop-color="#8b83ff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs></svg>
 <header class="nav"><div class="nav-in">
-  <div class="brand"><div class="mark" aria-hidden="true">A</div><div style="min-width:0"><div class="bt">Auteurs · Thématiques 1 à 12</div><div class="bs">Concours de promotion interne OFPPT</div></div></div>
-  <nav class="tabs" role="tablist" aria-label="Outils de révision">
-    <button class="tab" role="tab" id="t-qcm" aria-selected="true" data-v="qcm">QCM Auteurs <small>146 questions</small></button>
-    <button class="tab" role="tab" id="t-flash" aria-selected="false" data-v="flash">Flashcards <small>124 cartes</small></button>
-    <button class="tab" role="tab" id="t-ped" aria-selected="false" data-v="ped">QCM Pédagogie <small>67 questions</small></button>
-    <button class="tab" role="tab" id="t-q120" aria-selected="false" data-v="q120">QCM Entraînement <small>120 questions</small></button>
-    <a class="tab" href="Auteurs_Thematiques_OFPPT.pdf" target="_blank" rel="noopener" id="t-pdf">Guide PDF</a>
+  <button class="brand" data-v="home" aria-label="Accueil"><div class="mark" aria-hidden="true">O</div><div class="tx"><div class="bt">Concours OFPPT</div><div class="bs">Promotion interne · Centre de révision</div></div></button>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Outils de révision">
+    <button class="tab" role="tab" data-v="home" aria-selected="true">Accueil</button>
+    <button class="tab" role="tab" data-v="qcm" aria-selected="false">QCM Auteurs<small>146</small></button>
+    <button class="tab" role="tab" data-v="flash" aria-selected="false">Flashcards<small>124</small></button>
+    <button class="tab" role="tab" data-v="ped" aria-selected="false">Pédagogie<small>67</small></button>
+    <button class="tab" role="tab" data-v="q120" aria-selected="false">Entraînement<small>120</small></button>
+    <button class="tab" role="tab" data-v="mem" aria-selected="false">Mémento<small>40</small></button>
+    <a class="tab" href="Auteurs_Thematiques_OFPPT.pdf" target="_blank" rel="noopener">Guide PDF ↗</a>
+    <span class="ind" id="ind"></span>
   </nav>
 </div></header>
-<div class="views">
-<iframe id="f-qcm" class="on" title="QCM des auteurs" srcdoc="<!DOCTYPE html>
+<div class="main">
+  <section class="view on" id="home" aria-label="Accueil"><div class="hub">
+    <span class="eyebrow"><i></i> Concours de promotion interne · Corps formateur</span>
+    <h1 class="title"><span class="grad">Maîtrise la pédagogie,</span><br>réussis ton concours.</h1>
+    <div class="type" id="type" aria-live="off"></div>
+    <div class="cta">
+      <button class="btn p" data-v="q120">🎯 Commencer l’entraînement</button>
+      <button class="btn" data-v="mem">📖 Ouvrir le mémento</button>
+      <button class="btn" data-v="flash">🗂️ Réviser les flashcards</button>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><b data-count="497">0</b><span>questions et fiches</span></div>
+      <div class="kpi"><b data-count="5">0</b><span>outils interactifs</span></div>
+      <div class="kpi"><b id="k-m">0</b><span>questions maîtrisées</span></div>
+      <div class="kpi"><b id="k-p">0%</b><span>progression (3 QCM suivis)</span></div>
+    </div>
+    <div class="sec">Tes outils de révision</div>
+    <div class="cards" id="cards"></div>
+    <p class="foot">Ta progression est enregistrée dans ce navigateur. Les réponses des QCM sont établies par analyse pédagogique : à vérifier avec ton cours.</p>
+  </div></section>
+  <section class="view" id="stage" aria-label="Outil de révision"><div class="frame">
+    <div class="loader off" id="loader"><div class="spin"></div></div>
+<iframe id="f-qcm" title="QCM des auteurs" srcdoc="<!DOCTYPE html>
 <html lang=&quot;fr&quot;>
 <head>
 <meta charset=&quot;utf-8&quot;>
@@ -1240,24 +1321,100 @@ home();
 </body>
 </html>
 "></iframe>
-<iframe id="f-ped" title="QCM Pédagogie" src="qcm-pedagogie.html"></iframe>
-<iframe id="f-q120" title="QCM d'entraînement 120 questions" src="qcm-120.html"></iframe>
+    <iframe id="f-ped" title="QCM Pédagogie"></iframe>
+    <iframe id="f-q120" title="QCM d'entraînement 120 questions"></iframe>
+    <iframe id="f-mem" title="QCM Mémento"></iframe>
+  </div></section>
 </div>
 <script>
 (function(){
-  var V=["qcm","flash","ped","q120"];
-  function show(v,focus){
-    if(V.indexOf(v)<0)v="qcm";
-    V.forEach(function(k){
-      document.getElementById("f-"+k).classList.toggle("on",k===v);
-      document.getElementById("t-"+k).setAttribute("aria-selected",k===v);
+  var TOOLS=[
+   {v:'ped',ic:'🧠',t:'QCM Pédagogie',d:'Les 67 questions uniques des sujets 2019-2020, classées par thème, avec explications.',n:'67 questions',key:'qcm-ofppt-v1',total:67},
+   {v:'q120',ic:'🎯',t:'Entraînement 120',d:'12 thématiques, situations professionnelles, examen complet de 2 h en conditions réelles.',n:'120 questions',key:'qcm-ofppt-120-v1',total:120},
+   {v:'mem',ic:'📖',t:'Mémento & QCM',d:'7 courants, 5 méthodes, 3 approches : tableaux de synthèse et 40 questions pour les maîtriser.',n:'40 questions',key:'qcm-memento-v1',total:40},
+   {v:'qcm',ic:'✍️',t:'QCM Auteurs',d:'Associe chaque auteur à sa thématique (thématiques 1 à 12).',n:'146 questions'},
+   {v:'flash',ic:'🗂️',t:'Flashcards Auteurs',d:'124 cartes pour mémoriser les auteurs, avec balayage tactile.',n:'124 cartes'},
+   {v:'pdf',ic:'📄',t:'Guide PDF',d:'Le guide des auteurs par thématique, à lire ou imprimer.',n:'PDF',href:'Auteurs_Thematiques_OFPPT.pdf'}
+  ];
+  var V=['home','qcm','flash','ped','q120','mem'];
+  var SRC={ped:'qcm-pedagogie.html',q120:'qcm-120.html',mem:'qcm-memento.html'};
+  var $=function(s){return document.querySelector(s)};
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* cartes */
+  var C=2*Math.PI*22;
+  $('#cards').innerHTML=TOOLS.map(function(t,i){
+    var tag=t.href?'a href="'+t.href+'" target="_blank" rel="noopener"':'button data-v="'+t.v+'"';
+    var end=t.href?'a':'button';
+    return '<'+tag+' class="cd" style="animation-delay:'+(.1+i*.08)+'s"><div class="top"><div class="ico">'+t.ic+'</div>'+
+      '<div class="rg '+(t.key?'':'na')+'" data-k="'+(t.key||'')+'" data-t="'+(t.total||0)+'"><svg width="54" height="54" viewBox="0 0 54 54"><circle class="t" cx="27" cy="27" r="22" fill="none" stroke-width="5"/><circle class="p" cx="27" cy="27" r="22" fill="none" stroke-width="5" stroke-dasharray="'+C+'" stroke-dashoffset="'+C+'"/></svg><b>0%</b></div></div>'+
+      '<h3>'+t.t+'</h3><p>'+t.d+'</p><div class="meta"><span class="pill">'+t.n+'</span><span class="pill go">'+(t.href?'Ouvrir ↗':'Ouvrir →')+'</span></div></'+end+'>';
+  }).join('');
+  /* tilt */
+  document.querySelectorAll('.cd').forEach(function(c){
+    c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      if(!reduce){c.style.setProperty('--ry',((x-.5)*10)+'deg');c.style.setProperty('--rx',((.5-y)*10)+'deg')}
+      c.style.setProperty('--mx',(x*100)+'%');c.style.setProperty('--my',(y*100)+'%')});
+    c.addEventListener('mouseleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')});
+  });
+  /* compteurs */
+  function count(el,to,suf,dur){if(reduce){el.textContent=to+(suf||'');return}var t0=performance.now();dur=dur||1200;(function f(t){var k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=Math.round(to*e)+(suf||'');if(k<1)requestAnimationFrame(f)})(t0)}
+  function progress(){
+    var tm=0,tt=0;
+    document.querySelectorAll('.rg[data-k]').forEach(function(r){
+      var k=r.getAttribute('data-k');if(!k)return;var tot=+r.getAttribute('data-t'),m=0;
+      try{var P=JSON.parse(localStorage.getItem(k)||'{}');for(var id in P){if(P[id]&&P[id].b>=2)m++}}catch(e){}
+      tm+=m;tt+=tot;var p=Math.round(100*m/tot);
+      r.querySelector('.p').style.strokeDashoffset=C*(1-p/100);r.querySelector('b').textContent=p+'%';
     });
-    try{history.replaceState(null,"","#"+v);}catch(e){}
-    if(focus){try{document.getElementById("f-"+v).contentWindow.focus();}catch(e){}}
+    count($('#k-m'),tm);count($('#k-p'),tt?Math.round(100*tm/tt):0,'%');
   }
-  document.querySelectorAll("[data-v]").forEach(function(b){b.addEventListener("click",function(){show(b.getAttribute("data-v"),true);});});
-  window.addEventListener("hashchange",function(){show(location.hash.slice(1));});
-  show(location.hash.slice(1)||"qcm");
+  document.querySelectorAll('[data-count]').forEach(function(el){count(el,+el.getAttribute('data-count'))});
+  /* machine à écrire */
+  var PH=['QCM de pédagogie pour s’entraîner','Mémento : courants, méthodes, approches','Flashcards pour retenir les auteurs','Examen blanc en conditions réelles'];
+  (function(){var el=$('#type'),i=0,j=0,del=false;
+    if(reduce){el.innerHTML='<b>'+PH[0]+'</b>';return}
+    (function step(){var s=PH[i];j+=del?-1:1;el.innerHTML='<b>'+s.slice(0,j)+'</b><span class="caret"></span>';
+      var wait=del?28:55;if(!del&&j===s.length){del=true;wait=1700}else if(del&&j===0){del=false;i=(i+1)%PH.length;wait=350}
+      setTimeout(step,wait)})()})();
+  /* navigation */
+  var ind=$('#ind'),tabs=$('#tabs');
+  function moveInd(v){var t=tabs.querySelector('.tab[data-v="'+v+'"]');if(!t)return;ind.style.left=t.offsetLeft+'px';ind.style.width=t.offsetWidth+'px';
+    try{t.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}}
+  var loader=$('#loader');
+  function show(v,focus){
+    if(V.indexOf(v)<0)v='home';
+    var stage=v!=='home';
+    $('#home').classList.toggle('on',!stage);$('#stage').classList.toggle('on',stage);
+    document.querySelectorAll('.tab[data-v]').forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-v')===v)});
+    moveInd(v);
+    V.forEach(function(k){var f=document.getElementById('f-'+k);if(!f)return;
+      if(k===v){
+        if(SRC[k]&&!f.getAttribute('src')){loader.classList.remove('off');f.addEventListener('load',function(){loader.classList.add('off')},{once:true});f.setAttribute('src',SRC[k])}
+        else loader.classList.add('off');
+        f.classList.add('on')}else f.classList.remove('on')});
+    try{history.replaceState(null,'','#'+v)}catch(e){}
+    if(!stage)progress();
+    else if(focus){var f=document.getElementById('f-'+v);try{f.contentWindow.focus()}catch(e){}}
+  }
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-v]');if(b){show(b.getAttribute('data-v'),true)}});
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+  window.addEventListener('resize',function(){moveInd(location.hash.slice(1)||'home')});
+  window.addEventListener('storage',progress);
+  /* fond animé : réseau de particules */
+  (function(){
+    var cv=$('#bg'),cx=cv.getContext('2d'),W,H,N,pts=[],mx=-999,my=-999;
+    function fit(){W=cv.width=innerWidth;H=cv.height=innerHeight;N=Math.min(70,Math.round(W*H/20000));pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35})}
+    fit();addEventListener('resize',fit);addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
+    if(reduce)return;
+    (function draw(){cx.clearRect(0,0,W,H);
+      for(var i=0;i<N;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+        var dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120){p.x+=dx/d*1.2;p.y+=dy/d*1.2}
+        cx.fillStyle='rgba(180,190,255,.55)';cx.beginPath();cx.arc(p.x,p.y,1.6,0,6.3);cx.fill();
+        for(var j=i+1;j<N;j++){var q=pts[j],ax=p.x-q.x,ay=p.y-q.y,dd=ax*ax+ay*ay;if(dd<16000){cx.strokeStyle='rgba(139,131,255,'+(.22*(1-dd/16000))+')';cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}}
+      requestAnimationFrame(draw)})();
+  })();
+  show(location.hash.slice(1)||'home');
+  document.fonts&&document.fonts.ready&&document.fonts.ready.then(function(){moveInd(location.hash.slice(1)||'home')});
 })();
 </script>
 </body>
