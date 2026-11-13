@@ -93,21 +93,21 @@ function repeat(){if(last){say(last,{force:true})}}
 /* ---------- phrases localisées (fr / ar = arabe standard / dar = darija marocaine) ---------- */
 var T={
 fr:{ok:['Bonne réponse !','Exact !','C’est ça, bravo !','Très bien, c’est correct.'],ko:['Ce n’est pas la bonne réponse.','Attention, c’est un piège classique.','Presque, mais non.','Pas tout à fait.'],
- streak:function(n){return ' Série de '+n+', continue comme ça.'},principle:'Retiens ce principe : ',youAns:'Tu as répondu : ',correctIs:'La bonne réponse est : ',why:'Pourquoi ? ',check:' Attention, cette réponse est à vérifier avec ton cours.',
+ streak:function(n){return ' Série de '+n+', continue comme ça.'},principle:'Retiens ce principe : ',chose:'Tu as choisi : ',whyNot:' Ce choix ne convient pas, voici pourquoi : ',whyYes:' C’est correct, voici pourquoi : ',anc:' À ancrer dans ta mémoire : ',youAns:'Tu as répondu : ',correctIs:'La bonne réponse est : ',why:'Pourquoi ? ',check:' Attention, cette réponse est à vérifier avec ton cours.',
  qn:function(n,t){return 'Question '+n+' sur '+t+'. '},theme:'Thème : ',resp:'Réponse',expl:' Explication : ',auth:' Auteurs à retenir : ',
  sum:function(ok,tot,pct){return 'Bilan : '+ok+' bonne'+(ok>1?'s':'')+' réponse'+(ok>1?'s':'')+' sur '+tot+', soit '+pct+' pour cent. '},left:function(w){return ' Il te reste '+w+' point'+(w>1?'s':'')+' à revoir. Je peux te relire les corrections.'},
  card:'Carte : ',ans:'Réponse : ',pct:' de réussite, ',
  on:'Accompagnateur activé. Je t’explique chaque réponse, chaque principe et chaque section. Pose-moi une question en répondant, je te dis pourquoi.',
  test:'Bonjour ! Je suis ton accompagnateur. Je t’explique chaque bonne ou mauvaise réponse, et chaque principe à retenir. Courant, approche, méthode : ne confonds plus jamais.'},
 ar:{ok:['إجابة صحيحة!','أحسنت!','هذا هو الصواب، برافو!','ممتاز، إجابتك صحيحة.'],ko:['هذه ليست الإجابة الصحيحة.','انتبه، هذا فخ شائع.','اقتربت، لكن لا.','ليس تمامًا.'],
- streak:function(n){return ' سلسلة من '+n+' إجابات صحيحة، تابع هكذا.'},principle:'احفظ هذا المبدأ: ',youAns:'أجبتَ: ',correctIs:'الإجابة الصحيحة هي: ',why:'لماذا؟ ',check:' انتبه، هذه الإجابة تحتاج إلى التأكد منها مع درسك.',
+ streak:function(n){return ' سلسلة من '+n+' إجابات صحيحة، تابع هكذا.'},principle:'احفظ هذا المبدأ: ',chose:'اخترتَ: ',whyNot:' هذا الاختيار غير مناسب، والسبب: ',whyYes:' اختيارك صحيح، والسبب: ',anc:' للترسيخ في ذاكرتك: ',youAns:'أجبتَ: ',correctIs:'الإجابة الصحيحة هي: ',why:'لماذا؟ ',check:' انتبه، هذه الإجابة تحتاج إلى التأكد منها مع درسك.',
  qn:function(n,t){return 'السؤال رقم '+n+' من '+t+'. '},theme:'المحور: ',resp:'الاقتراح',expl:' الشرح: ',auth:' المؤلفون الواجب حفظهم: ',
  sum:function(ok,tot,pct){return 'الحصيلة: '+ok+' إجابات صحيحة من '+tot+'، أي '+pct+' بالمئة. '},left:function(w){return ' بقيت '+w+' نقاط للمراجعة. يمكنني أن أقرأ لك التصحيحات.'},
  card:'بطاقة: ',ans:'الجواب: ',pct:' نجاح، ',
  on:'تم تفعيل المرافق. سأشرح لك كل إجابة وكل مبدأ وكل قسم. أجب عن سؤال وسأخبرك لماذا.',
  test:'مرحبًا! أنا مرافقك الصوتي. أشرح لك كل إجابة صحيحة أو خاطئة، وكل مبدأ يجب حفظه. التيار والمقاربة والطريقة: لا تخلط بينها بعد اليوم.'},
 dar:{ok:['جواب صحيح!','زوين، براڤو!','هادا هو، مزيان!','زوين، الجواب ديالك صحيح.'],ko:['هادا ماشي هو الجواب الصحيح.','حاضي، هادي فخ معروف.','قريب، ولكن لا.','ماشي بالضبط.'],
- streak:function(n){return ' سلسلة د '+n+' د الأجوبة الصحيحة، كمّل هكا.'},principle:'حفظ هاد المبدأ: ',youAns:'نتا جاوبتي: ',correctIs:'الجواب الصحيح هو: ',why:'علاش؟ ',check:' حاضي، هاد الجواب خاصك تتأكد منو مع الدرس ديالك.',
+ streak:function(n){return ' سلسلة د '+n+' د الأجوبة الصحيحة، كمّل هكا.'},principle:'حفظ هاد المبدأ: ',chose:'نتا ختاريتي: ',whyNot:' هاد الاختيار ماشي مناسب، والسبب: ',whyYes:' الاختيار ديالك صحيح، والسبب: ',anc:' باش يثبت ليك فالذاكرة: ',youAns:'نتا جاوبتي: ',correctIs:'الجواب الصحيح هو: ',why:'علاش؟ ',check:' حاضي، هاد الجواب خاصك تتأكد منو مع الدرس ديالك.',
  qn:function(n,t){return 'السؤال نمرة '+n+' من '+t+'. '},theme:'الموضوع: ',resp:'الاختيار',expl:' الشرح: ',auth:' المؤلفين لي خاصك تحفظ: ',
  sum:function(ok,tot,pct){return 'الحصيلة: '+ok+' د الأجوبة الصحيحة من '+tot+'، يعني '+pct+' فالمية. '},left:function(w){return ' بقاو ليك '+w+' د النقط باش تراجعهم. نقدر نقرا ليك التصحيحات.'},
  card:'بطاقة: ',ans:'الجواب: ',pct:' د النجاح، ',
@@ -135,12 +135,14 @@ function question(o){
 }
 function answer(o){
   if(!ST.fb)return;
-  var s=[];
+  var s=[],an=o.anch&&(lg()==='fr'?C(o.anch[0]):{l:'ar',t:o.anch[lg()==='ar'?1:2]});
   if(o.ok){
-    s.push(rndP('ok'));if(o.streak>=3)s.push(P('streak',o.streak));s.push(P('principle'),X(o));
+    s.push(rndP('ok'));if(o.streak>=3)s.push(P('streak',o.streak));
+    s.push(P('chose'),C(o.chosen+'.'),P('whyYes'),X(o));
   }else{
-    s.push(rndP('ko'),P('youAns'),C(o.chosen+'.'),P('correctIs'),C(o.correct+'.'),P('why'),X(o));
+    s.push(rndP('ko'),P('chose'),C(o.chosen+'.'),P('whyNot'),X(o),P('correctIs'),C(o.correct+'.'));
   }
+  if(an)s.push(P('anc'),an);
   if(o.flag==='check')s.push(P('check'));
   say(s);
 }
