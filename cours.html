@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cours de pédagogie · OFPPT</title>
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1233;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.15);--tx:#eef2fb;--mut:#a9b6d6;--a:#5b72ee;--b:#3fc58a;--c:#e8c26a}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.5 Manrope,system-ui,sans-serif;overflow:hidden}
+h1,h2,h3,.ttl{font-family:Sora,Manrope,sans-serif}
+.photo{position:fixed;inset:0;z-index:0;overflow:hidden}
+.photo div{position:absolute;inset:-5%;background:center/cover;opacity:0;transition:opacity 1.5s;animation:kb 24s ease-in-out infinite alternate}
+.photo div.on{opacity:.3}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,18,51,.9),rgba(10,18,51,.7) 50%,rgba(15,80,60,.55))}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.13) translate(-2%,-1%)}}
+.app{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:230px 1fr;grid-template-rows:auto 1fr}
+header{grid-column:1/3;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);background:rgba(10,18,51,.6);backdrop-filter:blur(10px);flex-wrap:wrap}
+header img{width:38px;height:38px;border-radius:50%;background:#fff}
+header h1{font-size:1rem;margin:0;flex:1;min-width:160px}header h1 small{display:block;font-weight:500;color:var(--mut);font-size:.75rem}
+.seg{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{border:0;border-radius:0;background:transparent}
+.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--a),var(--b));color:#06122e;font-weight:700}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 12px;transition:transform .15s,background .2s}
+button:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+input.s{background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:10px;padding:7px 12px;width:190px}
+aside{overflow-y:auto;padding:10px;border-right:1px solid var(--line);background:rgba(10,18,51,.45)}
+.th{display:flex;gap:8px;align-items:center;width:100%;text-align:left;margin-bottom:6px;padding:6px;border-radius:12px;position:relative;background:transparent;border:1px solid transparent}
+.th img{width:76px;height:43px;object-fit:cover;border-radius:6px;flex:none;border:1px solid var(--line)}
+.th span{font-size:.76rem;line-height:1.25}
+.th b{display:block;color:var(--c);font-size:.66rem;letter-spacing:.06em}
+.th.cur{background:rgba(91,114,238,.25);border-color:var(--a)}
+.th.seen::after{content:"✓";position:absolute;right:6px;top:4px;color:var(--b);font-weight:800;font-size:.8rem}
+.th.hide{display:none}
+main{position:relative;overflow-y:auto;padding:14px 16px 90px}
+.prog{height:6px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden;margin-bottom:12px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b));transition:width .5s}
+.layout{display:grid;gap:14px;grid-template-columns:1fr}
+.layout.both{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.layout.txt .stage{display:none}.layout.img .read{display:none}
+.stage{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5);background:#fff;aspect-ratio:16/9;align-self:start}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;animation:in .55s both}
+@keyframes in{from{opacity:0;transform:translateX(var(--dx,40px)) scale(.98)}to{opacity:1;transform:none}}
+.read{align-self:start}
+.kick{display:inline-block;font:700 .72rem Sora;letter-spacing:.1em;color:#06122e;background:linear-gradient(135deg,var(--c),#f4dd9b);border-radius:99px;padding:3px 12px;margin-bottom:8px}
+.read h2{margin:2px 0 12px;font-size:1.35rem;line-height:1.2}
+.ln{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:7px 0;backdrop-filter:blur(8px);opacity:0;animation:up .5s forwards;transition:transform .2s,border-color .2s}
+.ln:hover{transform:translateX(4px);border-color:var(--b)}
+.ln .ic{font-size:1.25rem;flex:none;width:28px;text-align:center}
+.ln.hl{border-color:var(--c);box-shadow:0 0 0 2px rgba(232,194,106,.35)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+mark{background:var(--c);color:#06122e;border-radius:4px;padding:0 2px}
+table{width:100%;border-collapse:collapse;font-size:.85rem;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left}th{background:rgba(91,114,238,.3)}
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:5;display:flex;gap:8px;align-items:center;background:rgba(10,18,51,.85);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:99px;padding:7px 10px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.bar button.p{background:linear-gradient(135deg,var(--a),var(--b));color:#06122e;font-weight:700;border:0}
+.bar .n{font:700 .85rem Sora;min-width:64px;text-align:center}
+.empty{padding:40px;text-align:center;color:var(--mut)}
+@media(max-width:820px){.app{grid-template-columns:1fr;grid-template-rows:auto auto 1fr}aside{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:8px}.th{width:150px;flex:none;margin:0}.th img{width:50px;height:28px}.layout.both{grid-template-columns:1fr}header{grid-column:1}input.s{width:130px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ln{opacity:1}}
+</style>
+</head>
+<body>
+<div class="photo" aria-hidden="true"><div id="p1"></div><div id="p2"></div></div>
+<div class="app">
+<header>
+  <img src="img/logo.jpg" alt="OFPPT">
+  <h1 class="ttl">Cours de pédagogie OFPPT<small>Le PowerPoint en lecture dynamique · 23 diapos</small></h1>
+  <input class="s" id="q" type="search" placeholder="🔎 Rechercher dans le cours" aria-label="Rechercher dans le cours">
+  <div class="seg" role="group" aria-label="Affichage"><button data-m="both" aria-pressed="true">Les deux</button><button data-m="img" aria-pressed="false">Diapo</button><button data-m="txt" aria-pressed="false">Lecture</button></div>
+  <button id="auto" aria-pressed="false">▶ Diaporama</button>
+  <button id="fs" aria-label="Plein écran">⛶</button>
+</header>
+<aside id="list" aria-label="Liste des diapos"></aside>
+<main id="main" tabindex="-1">
+  <div class="prog" aria-hidden="true"><i id="pg"></i></div>
+  <div class="layout both" id="lay">
+    <div class="stage" id="stage"></div>
+    <article class="read" id="read" aria-live="polite"></article>
+  </div>
+</main>
+</div>
+<div class="bar" role="toolbar" aria-label="Navigation du cours">
+  <button id="pv" aria-label="Diapo précédente">←</button><span class="n" id="num"></span><button class="p" id="nx" aria-label="Diapo suivante">→</button>
+  <button id="say" aria-label="Lire la diapo à voix haute">🔊 Lire</button><button id="stop" aria-label="Arrêter la voix">⏹</button>
+</div>
+<script src="coach.js"></script>
+<script>
+const SL=[{"n": 1, "title": "Concours OFPPT : l'essentiel de la pédagogie", "kicker": "", "lines": ["L'essentiel des modules de formation des formateurs, prêt à réviser pour le QCM", "🗓️ Épreuve : 22 novembre 2026 · 2 heures · QCM"]}, {"n": 2, "title": "Dix blocs, trois niveaux de priorité", "kicker": "VUE D'ENSEMBLE", "lines": ["Priorité 1", "Priorité 2", "Priorité 3", "🎯 Objectifs pédagogiques", "🛠️ Méthodes pédagogiques", "💬 Communication", "📊 Évaluation", "🧠 Courants et adulte", "🗂️ Supports et préparation", "🧩 APC", "🎤 Formateur et animation", "💻 Numérique et FAD", "📖 Glossaire OFPPT"]}, {"n": 3, "title": "De la finalité à l'objectif pédagogique", "kicker": "OBJECTIFS", "lines": ["Finalité", "Valeurs d'une société : « former des citoyens responsables »", "But", "Intention générale d'un programme de formation", "Objectif de formation", "Compétence demandée par le commanditaire (cahier des charges)", "Objectif pédagogique", "Capacité à acquérir, définie par le formateur", "🪜 Trois niveaux : général (formation) → intermédiaire (séquence) → opérationnel (séance)"]}, {"n": 4, "title": "L'objectif opérationnel en cinq éléments", "kicker": "OBJECTIFS", "lines": ["1", "2", "3", "4", "5", "Verbe opératoire", "Sujet", "Produit et objet", "Conditions et critères", "Barème", "Action observable", "L'apprenant, jamais le formateur", "Résultat et support de l'action", "Qualité et quantité", "Seuil de réussite, facultatif", "📐 Exemple en topographie", "À partir d'un carnet de terrain et avec une station totale, le stagiaire implantera quatre points d'un bâtiment en moins de 45 minutes, avec un écart inférieur à 2 cm."]}, {"n": 5, "title": "Trois domaines et des verbes à éviter", "kicker": "OBJECTIFS", "lines": ["Cognitif = savoir", "Psychomoteur = savoir-faire", "Socio-affectif = savoir-être", "Citer les parties d'une station totale", "Mettre un niveau en station", "Travailler en équipe sur le chantier", "⚠️ Verbes non opératoires", "📚 Taxonomies", "comprendre · connaître · apprécier · réfléchir · penser · juger", "Bloom, 1956 : cognitif — Krathwohl : affectif — Harrow : psychomoteur"]}, {"n": 6, "title": "Évaluation normée ou critériée", "kicker": "ÉVALUATION", "lines": ["Normée", "Critériée", "80 %", "Pédagogie traditionnelle — Sélectionner et classer — Comparaison au groupe ou à la moyenne", "Pédagogie moderne — Faire réussir le plus grand nombre — Comparaison à des critères, pas aux pairs", "des stagiaires maîtrisent", "80 %", "des objectifs : la cible de l'évaluation critériée"]}, {"n": 7, "title": "Quatre évaluations, quatre moments", "kicker": "ÉVALUATION", "lines": ["AVANT", "PENDANT", "À LA FIN", "APRÈS", "Prédictive", "Formative", "Sommative", "Suivi", "Diagnostic et pronostic — Vérifie les prérequis", "Scriven, 1967 — Remédiation — Jamais normative", "Bilan des acquis — Décision définitive", "Impact au poste de travail — Nouveaux besoins"]}, {"n": 8, "title": "Une bonne évaluation : trois qualités", "kicker": "ÉVALUATION", "lines": ["Fidélité", "Validité", "Sensibilité", "Même note, quel que soit le correcteur ou le moment", "Mesure exactement ce qui doit être mesuré", "La note suit finement la qualité du travail", "La démarche en cinq étapes", "Décision", "Critères", "Recueil", "Comparaison", "Conclusion", "📚 Docimologie : étude des systèmes de notation et des examens"]}, {"n": 9, "title": "La compétence selon l'OFPPT", "kicker": "APC", "lines": ["Savoir", "Savoir-faire", "Savoir-être", "Compétence : réaliser une tâche selon les exigences du milieu de travail", "Quatre caractéristiques", "Liée à une classe de situations", "Intégratrice", "Terminale d'un cycle", "Visible en situation"]}, {"n": 10, "title": "L'APC prolonge la pédagogie par objectifs", "kicker": "APC", "lines": ["PPO  Objectifs définis dans le milieu de formation", "L'APC en quatre points", "Centrée sur l'action du formé — Part des situations de travail — Sert à élaborer les programmes : ce n'est pas une méthode d'enseignement — Repose sur la résolution de problèmes", "continuité", "APC  Compétences tirées du milieu de travail", "📍 Origine : Canada, début des années 1970, secteur électrique"]}, {"n": 11, "title": "Élaborer un programme en trois phases", "kicker": "APC", "lines": ["1", "Étude et planification", "2", "Conception et production", "3", "Implantation et évaluation", "Études sectorielles — Définition du projet", "AST — Orientations et durées — Supports pédagogiques", "Mise en place du dispositif — Évaluation et réajustement", "🔑 AST = analyse de la situation de travail : le point de départ de la conception"]}, {"n": 12, "title": "Le module et les documents du programme", "kicker": "APC", "lines": ["📘 Programme d'études", "Le module", "RÉFÉRENCE", "Deux critères", "📘 Guide pédagogique", "Associativité · Autonomie", "INDICATIF", "Trois avantages", "📘 Guide d'évaluation", "Économique (capitalisable) — Personnalisé — Efficace", "NORMATIF", "📘 Guide d'organisation", "MATÉRIEL"]}, {"n": 13, "title": "Trois familles de méthodes", "kicker": "MÉTHODES", "lines": ["Centrée sur…", "Magistrale", "Interrogative", "le formateur", "Rapide, grand groupe ; risque de passivité", "Faire découvrir par des questions (Cousinet)", "l'activité des stagiaires", "Démonstrative", "Entraînement", "le travail individuel", "Observer → démontrer → faire appliquer", "Automatismes par la répétition"]}, {"n": 14, "title": "Quatre méthodes comparées en chiffres", "kicker": "MÉTHODES", "lines": [{"table": [["", "Affirmative", "Interrogative", "Découverte", "Active"], ["Démarche", "Déductive", "Déductive", "Inductive", "Inductive"], ["Groupe", "20 et plus", "20 maximum", "8 à 12", "8 à 12"], ["Durée", "5 à 10 min", "15 à 30 min", "30 min à 1 h 30", "2 h à 2 h 30"], ["Management", "Autoritaire", "Participatif", "Coopératif", "Démocratique"], ["On retient", "Le répété", "Le compris", "Le découvert", "Le construit"]]}]}, {"n": 15, "title": "Six techniques actives à reconnaître", "kicker": "MÉTHODES", "lines": ["Travail de groupe", "Jeu de rôle", "Simulation", "4 à 8 personnes, 45 à 90 minutes", "4 étapes, des observateurs", "3 phases, feed-back final", "Étude de cas", "Visite", "Projet", "Sous-groupes de 3 à 5, une décision", "4 phases, jamais isolée du cours", "Ampleur, pertinence, acceptation, réalisme"]}, {"n": 16, "title": "Les courants pédagogiques et leurs auteurs", "kicker": "APPRENTISSAGE", "lines": ["Quatre courants (module 1)", "Du formateur vers l'apprenant", "Transmissif", "Traditionnel — le formateur expose", "Béhaviorisme", "Comportementaliste — Skinner, renforcement", "Cognitivisme", "Humaniste — Rogers, non-directivité", "Constructivisme", "Fonctionnaliste — Mager, objectifs", "Socioconstructivisme"]}, {"n": 17, "title": "L'adulte retient surtout ce qu'il fait", "kicker": "APPRENTISSAGE", "lines": ["🧑‍🎓 L'adulte apprend si…", "il comprend — le lien avec son quotidien existe — il accepte les objectifs — il agit et s'engage — réussites et échecs sont exploités — il est intégré au groupe — le climat est participatif"]}, {"n": 18, "title": "Six rôles et trois fonctions du formateur", "kicker": "FORMATEUR", "lines": ["Penseur", "Décideur", "Entraîneur", "Motivateur", "Médiateur", "Modèle", "Production", "Facilitation", "Régulation", "Faire produire les stagiaires : questions ouvertes, reformulation", "Organiser la forme : objectifs, méthode, temps", "Gérer la vie affective du groupe", "⚠️ Piège : la « production » est celle des stagiaires, pas celle du formateur"]}, {"n": 19, "title": "Préparer une séance : huit éléments", "kicker": "FORMATEUR", "lines": ["Public cible", "Objectifs", "Introduction", "1", "2", "Rappel, motivation, objectifs, plan", "Structure", "Contenu", "3", "4", "Développement", "Méthodes", "Temps", "Exposé, mise en situation, exercices", "5", "6", "Conclusion", "Supports", "Évaluation", "7", "8", "Synthèse, contrôle, cours suivant"]}, {"n": 20, "title": "Jakobson : six facteurs, six fonctions", "kicker": "COMMUNICATION ET NUMÉRIQUE", "lines": ["Référent — Référentielle", "Shannon, 1949 — Modèle linéaire, bruit", "Émetteur — Expressive", "Message — Poétique", "Récepteur — Conative", "Wiener — Rétroaction (feed-back)", "Palo Alto, 1956 — Tout est communication", "Canal — Phatique", "Code — Métalinguistique", "Berne — Analyse transactionnelle", "📉 80 % du message se perd entre deux personnes"]}, {"n": 21, "title": "Enseigner avec le numérique", "kicker": "COMMUNICATION ET NUMÉRIQUE", "lines": ["Classe inversée", "Classe virtuelle", "Formation à distance", "Avant : le contenu, à son rythme — En classe : application et entraide — Une capsule = une idée", "Petit groupe, interactive — Webinaire : grand nombre, peu interactif — Scénario écrit, pas d'improvisation", "Accessibilité — Flexibilité — Contextualisation — Tuteur : soutien et motivation"]}, {"n": 22, "title": "Glossaire : six paires à ne pas confondre", "kicker": "BILAN", "lines": ["Préacquis — ce que l'on possède", "Prérequis — ce qui est exigé", "Pré-test — vérifie les prérequis", "Post-test — mesure les objectifs", "Aptitude — un potentiel", "Capacité — « être capable de »", "Référentiel d'emploi — activités et tâches", "Référentiel de formation — objectifs", "Qualifiante — standard OFPPT", "Spécifique — sur mesure", "Déductive — du principe au cas", "Inductive — du cas au principe"]}, {"n": 23, "title": "Les pièges à éviter et l'ordre de révision", "kicker": "BILAN", "lines": ["Quatre pièges du QCM", "Ordre de révision", "Production = celle des stagiaires — APC = continuité de la PPO — Formative = jamais normative — Guide pédagogique indicatif, guide d'évaluation normatif", "1", "Objectifs et évaluation", "2", "APC et glossaire", "3", "Méthodes et formateur", "4", "QCM blancs et pièges"]}];
+const SEC={'OBJECTIFS':'salle1','ÉVALUATION':'batiment','APC':'salle2','MÉTHODES':'campus','APPRENTISSAGE':'salle1','FORMATEUR':'campus','COMMUNICATION ET NUMÉRIQUE':'vr',"VUE D'ENSEMBLE":'batiment','BILAN':'batiment','':'batiment'};
+const src=n=>'img/'+n+(n==='vr'?'.png':'.jpg');
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY='cours-vu-v1';let seen=[];try{seen=JSON.parse(localStorage.getItem(KEY)||'[]')||[]}catch(e){}
+let cur=0,mode='both',term='',auto=null,phi=0,curPh='',dx=40;
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(seen))}catch(e){}try{parent!==window&&parent.postMessage({type:'progress'},'*')}catch(e){}};
+const num=i=>String(i+1).padStart(2,'0');
+const plain=s=>{const m=s.o.title+'. '+s.o.lines.map(l=>typeof l==='string'?l:l.table.map(r=>r.join(', ')).join('. ')).join('. ');return m};
+SL.forEach(s=>s.o=s);
+function photo(k){if(curPh===k)return;curPh=k;const a=$('#p1'),b=$('#p2'),nx=phi?a:b,pv=phi?b:a;phi^=1;nx.style.backgroundImage=`url(${src(k)})`;nx.classList.add('on');pv.classList.remove('on')}
+function hl(t){if(!term)return esc(t);const r=new RegExp('('+term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');return esc(t).replace(r,'<mark>$1</mark>')}
+function buildList(){
+  $('#list').innerHTML=SL.map((s,i)=>`<button class="th" data-i="${i}"><img src="cours/s-${num(i)}.jpg" alt="" loading="lazy"><span><b>${esc(s.kicker||'INTRO')}</b>${i+1}. ${esc(s.title)}</span></button>`).join('');
+  $('#list').onclick=e=>{const b=e.target.closest('.th');if(b)go(+b.dataset.i)};
+}
+function mark(){document.querySelectorAll('.th').forEach((b,i)=>{b.classList.toggle('cur',i===cur);b.classList.toggle('seen',seen.indexOf(i+1)>=0);const s=SL[i],hit=!term||(plain({o:s}).toLowerCase().indexOf(term)>=0);b.classList.toggle('hide',!hit)})}
+function render(){
+  const s=SL[cur];
+  $('#stage').innerHTML=`<img src="cours/s-${num(cur)}.jpg" alt="Diapo ${cur+1} : ${esc(s.title)}" style="--dx:${dx}px">`;
+  const items=s.lines.map((l,i)=>{
+    if(typeof l!=='string')return `<div class="ln" style="animation-delay:${.05*i}s;display:block"><table>${l.table.map((r,ri)=>`<tr>${r.map(c=>ri?`<td>${hl(c)}</td>`:`<th>${hl(c)}</th>`).join('')}</tr>`).join('')}</table></div>`;
+    const m=l.match(/^(\p{Extended_Pictographic}️?(?:‍\p{Extended_Pictographic}️?)*)\s*(.*)$/su);
+    const hit=term&&l.toLowerCase().indexOf(term)>=0;
+    return `<div class="ln ${hit?'hl':''}" style="animation-delay:${.05*i}s"><span class="ic">${m?m[1]:'▪️'}</span><span>${hl(m?m[2]:l)}</span></div>`}).join('');
+  $('#read').innerHTML=`${s.kicker?`<span class="kick">${esc(s.kicker)}</span>`:''}<h2 class="ttl">${hl(s.title)}</h2>${items}`;
+  $('#num').textContent=(cur+1)+' / '+SL.length;$('#pg').style.width=(100*(cur+1)/SL.length)+'%';
+  photo(SEC[s.kicker]||'batiment');
+  if(seen.indexOf(cur+1)<0){seen.push(cur+1);save()}
+  mark();$('#main').scrollTo({top:0});
+  const b=document.querySelector('.th.cur');if(b&&b.scrollIntoView)b.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});
+  try{history.replaceState(null,'','#'+(cur+1))}catch(e){}
+}
+function go(i){if(i<0||i>=SL.length)return;dx=i>=cur?40:-40;cur=i;render()}
+function say(){if(window.Coach){if(!Coach.on)Coach.enable&&Coach.enable();Coach.say(plain({o:SL[cur]}),{force:true})}}
+$('#pv').onclick=()=>go(cur-1);$('#nx').onclick=()=>go(cur+1);$('#say').onclick=say;$('#stop').onclick=()=>window.Coach&&Coach.stop();
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#lay').className='layout '+mode});
+$('#q').oninput=e=>{term=e.target.value.trim().toLowerCase();render();if(term){const f=SL.findIndex((s,i)=>i>=cur&&plain({o:s}).toLowerCase().indexOf(term)>=0);if(f>=0&&f!==cur)go(f)}};
+$('#auto').onclick=function(){if(auto){clearInterval(auto);auto=null;this.setAttribute('aria-pressed',false);this.textContent='▶ Diaporama';return}
+  this.setAttribute('aria-pressed',true);this.textContent='⏸ Pause';auto=setInterval(()=>{if(cur>=SL.length-1){$('#auto').click()}else go(cur+1)},14000)};
+$('#fs').onclick=()=>{const d=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else d.requestFullscreen&&d.requestFullscreen()};
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);else if(e.key==='Home')go(0);else if(e.key==='End')go(SL.length-1);else if(e.key.toLowerCase()==='l')say()});
+let tx=0;$('#main').addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});$('#main').addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)go(cur+(d<0?1:-1))},{passive:true});
+buildList();const h=parseInt(location.hash.slice(1));go(h>=1&&h<=SL.length?h-1:0);
+</script>
+</body>
+</html>

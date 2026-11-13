@@ -6,6 +6,8 @@ Site statique (GitHub Pages), sans dépendance à installer.
 |---|---|
 | `index.html` | Accueil animé + navigation par onglets |
 | `coach.js` | Accompagnateur vocal (synthèse vocale du navigateur) |
+| `cours.html` + `cours/` | Cours de pédagogie (PowerPoint OFPPT) en lecture dynamique : 23 diapos, texte, recherche, voix |
+| `img/` | Logo OFPPT et photos utilisées dans le design |
 | `qcm-pedagogie.html` | QCM Pédagogie, 67 questions des sujets 2019-2020 |
 | `qcm-120.html` | QCM d'entraînement, 120 questions, 12 thématiques, examen de 2 h |
 | `qcm-memento.html` | Mémento (7 courants, 5 méthodes, 3 approches) + 40 questions |
@@ -27,3 +29,8 @@ Les traductions arabe/darija sont générées par IA : à relire (la darija en p
 Réglages : voix, vitesse, ce qui est lu. Raccourcis dans les QCM : R répéter, Échap arrêter.
 
 Les réponses des QCM sont établies par analyse pédagogique : à vérifier avec le cours.
+
+## Notation canadienne (QCM Pédagogie, Entraînement, Mémento)
++1 point par bonne réponse, −1 par mauvaise, 0 sans réponse (bouton « Passer » en entraînement ; en examen, clique à nouveau sur ta réponse pour l'annuler). Résultat final : **RÉUSSI** si la note dépasse la moitié du nombre de questions, sinon **RATÉ**. Les 5 dernières sessions sont listées à l'accueil du QCM.
+
+Avancement : une question compte comme « réussie » quand ta dernière réponse est juste ; l'accueil du site se met à jour à chaque réponse.

@@ -93,21 +93,21 @@ function repeat(){if(last){say(last,{force:true})}}
 /* ---------- phrases localisées (fr / ar = arabe standard / dar = darija marocaine) ---------- */
 var T={
 fr:{ok:['Bonne réponse !','Exact !','C’est ça, bravo !','Très bien, c’est correct.'],ko:['Ce n’est pas la bonne réponse.','Attention, c’est un piège classique.','Presque, mais non.','Pas tout à fait.'],
- streak:function(n){return ' Série de '+n+', continue comme ça.'},principle:'Retiens ce principe : ',chose:'Tu as choisi : ',whyNot:' Ce choix ne convient pas, voici pourquoi : ',whyYes:' C’est correct, voici pourquoi : ',anc:' À ancrer dans ta mémoire : ',youAns:'Tu as répondu : ',correctIs:'La bonne réponse est : ',why:'Pourquoi ? ',check:' Attention, cette réponse est à vérifier avec ton cours.',
+ streak:function(n){return ' Série de '+n+', continue comme ça.'},principle:'Retiens ce principe : ',p1:' Plus un point.',m1:' Moins un point.',sk:'Tu passes cette question : zéro point. ',can:function(sc,tot,pass,ok,ko,sk){return 'Note canadienne : '+sc+' sur '+tot+', avec '+ok+' juste'+(ok>1?'s':'')+', '+ko+' fausse'+(ko>1?'s':'')+' et '+sk+' sans réponse. '+(pass?'Résultat final : tu as réussi !':'Résultat final : tu as été raté.')},chose:'Tu as choisi : ',whyNot:' Ce choix ne convient pas, voici pourquoi : ',whyYes:' C’est correct, voici pourquoi : ',anc:' À ancrer dans ta mémoire : ',youAns:'Tu as répondu : ',correctIs:'La bonne réponse est : ',why:'Pourquoi ? ',check:' Attention, cette réponse est à vérifier avec ton cours.',
  qn:function(n,t){return 'Question '+n+' sur '+t+'. '},theme:'Thème : ',resp:'Réponse',expl:' Explication : ',auth:' Auteurs à retenir : ',
  sum:function(ok,tot,pct){return 'Bilan : '+ok+' bonne'+(ok>1?'s':'')+' réponse'+(ok>1?'s':'')+' sur '+tot+', soit '+pct+' pour cent. '},left:function(w){return ' Il te reste '+w+' point'+(w>1?'s':'')+' à revoir. Je peux te relire les corrections.'},
  card:'Carte : ',ans:'Réponse : ',pct:' de réussite, ',
  on:'Accompagnateur activé. Je t’explique chaque réponse, chaque principe et chaque section. Pose-moi une question en répondant, je te dis pourquoi.',
  test:'Bonjour ! Je suis ton accompagnateur. Je t’explique chaque bonne ou mauvaise réponse, et chaque principe à retenir. Courant, approche, méthode : ne confonds plus jamais.'},
 ar:{ok:['إجابة صحيحة!','أحسنت!','هذا هو الصواب، برافو!','ممتاز، إجابتك صحيحة.'],ko:['هذه ليست الإجابة الصحيحة.','انتبه، هذا فخ شائع.','اقتربت، لكن لا.','ليس تمامًا.'],
- streak:function(n){return ' سلسلة من '+n+' إجابات صحيحة، تابع هكذا.'},principle:'احفظ هذا المبدأ: ',chose:'اخترتَ: ',whyNot:' هذا الاختيار غير مناسب، والسبب: ',whyYes:' اختيارك صحيح، والسبب: ',anc:' للترسيخ في ذاكرتك: ',youAns:'أجبتَ: ',correctIs:'الإجابة الصحيحة هي: ',why:'لماذا؟ ',check:' انتبه، هذه الإجابة تحتاج إلى التأكد منها مع درسك.',
+ streak:function(n){return ' سلسلة من '+n+' إجابات صحيحة، تابع هكذا.'},principle:'احفظ هذا المبدأ: ',p1:' زائد نقطة واحدة.',m1:' ناقص نقطة واحدة.',sk:'تجاوزت هذا السؤال: صفر نقطة. ',can:function(sc,tot,pass,ok,ko,sk){return 'العلامة الكندية: '+sc+' من '+tot+'، مع '+ok+' صحيحة و'+ko+' خاطئة و'+sk+' دون جواب. '+(pass?'النتيجة النهائية: لقد نجحت!':'النتيجة النهائية: لقد رسبت.')},chose:'اخترتَ: ',whyNot:' هذا الاختيار غير مناسب، والسبب: ',whyYes:' اختيارك صحيح، والسبب: ',anc:' للترسيخ في ذاكرتك: ',youAns:'أجبتَ: ',correctIs:'الإجابة الصحيحة هي: ',why:'لماذا؟ ',check:' انتبه، هذه الإجابة تحتاج إلى التأكد منها مع درسك.',
  qn:function(n,t){return 'السؤال رقم '+n+' من '+t+'. '},theme:'المحور: ',resp:'الاقتراح',expl:' الشرح: ',auth:' المؤلفون الواجب حفظهم: ',
  sum:function(ok,tot,pct){return 'الحصيلة: '+ok+' إجابات صحيحة من '+tot+'، أي '+pct+' بالمئة. '},left:function(w){return ' بقيت '+w+' نقاط للمراجعة. يمكنني أن أقرأ لك التصحيحات.'},
  card:'بطاقة: ',ans:'الجواب: ',pct:' نجاح، ',
  on:'تم تفعيل المرافق. سأشرح لك كل إجابة وكل مبدأ وكل قسم. أجب عن سؤال وسأخبرك لماذا.',
  test:'مرحبًا! أنا مرافقك الصوتي. أشرح لك كل إجابة صحيحة أو خاطئة، وكل مبدأ يجب حفظه. التيار والمقاربة والطريقة: لا تخلط بينها بعد اليوم.'},
 dar:{ok:['جواب صحيح!','زوين، براڤو!','هادا هو، مزيان!','زوين، الجواب ديالك صحيح.'],ko:['هادا ماشي هو الجواب الصحيح.','حاضي، هادي فخ معروف.','قريب، ولكن لا.','ماشي بالضبط.'],
- streak:function(n){return ' سلسلة د '+n+' د الأجوبة الصحيحة، كمّل هكا.'},principle:'حفظ هاد المبدأ: ',chose:'نتا ختاريتي: ',whyNot:' هاد الاختيار ماشي مناسب، والسبب: ',whyYes:' الاختيار ديالك صحيح، والسبب: ',anc:' باش يثبت ليك فالذاكرة: ',youAns:'نتا جاوبتي: ',correctIs:'الجواب الصحيح هو: ',why:'علاش؟ ',check:' حاضي، هاد الجواب خاصك تتأكد منو مع الدرس ديالك.',
+ streak:function(n){return ' سلسلة د '+n+' د الأجوبة الصحيحة، كمّل هكا.'},principle:'حفظ هاد المبدأ: ',p1:' زائد نقطة وحدة.',m1:' ناقص نقطة وحدة.',sk:'دزتي هاد السؤال: زيرو نقطة. ',can:function(sc,tot,pass,ok,ko,sk){return 'النقطة الكندية: '+sc+' من '+tot+'، فيها '+ok+' صحيحة و'+ko+' غالطة و'+sk+' بلا جواب. '+(pass?'النتيجة النهائية: نجحتي!':'النتيجة النهائية: ما نجحتيش.')},chose:'نتا ختاريتي: ',whyNot:' هاد الاختيار ماشي مناسب، والسبب: ',whyYes:' الاختيار ديالك صحيح، والسبب: ',anc:' باش يثبت ليك فالذاكرة: ',youAns:'نتا جاوبتي: ',correctIs:'الجواب الصحيح هو: ',why:'علاش؟ ',check:' حاضي، هاد الجواب خاصك تتأكد منو مع الدرس ديالك.',
  qn:function(n,t){return 'السؤال نمرة '+n+' من '+t+'. '},theme:'الموضوع: ',resp:'الاختيار',expl:' الشرح: ',auth:' المؤلفين لي خاصك تحفظ: ',
  sum:function(ok,tot,pct){return 'الحصيلة: '+ok+' د الأجوبة الصحيحة من '+tot+'، يعني '+pct+' فالمية. '},left:function(w){return ' بقاو ليك '+w+' د النقط باش تراجعهم. نقدر نقرا ليك التصحيحات.'},
  card:'بطاقة: ',ans:'الجواب: ',pct:' د النجاح، ',
@@ -135,12 +135,13 @@ function question(o){
 }
 function answer(o){
   if(!ST.fb)return;
+  if(o.skip){var s0=[P('sk'),P('correctIs'),C(o.correct+'.'),P('why'),X(o)],an0=o.anch&&(lg()==='fr'?C(o.anch[0]):{l:'ar',t:o.anch[lg()==='ar'?1:2]});if(an0)s0.push(P('anc'),an0);return say(s0)}
   var s=[],an=o.anch&&(lg()==='fr'?C(o.anch[0]):{l:'ar',t:o.anch[lg()==='ar'?1:2]});
   if(o.ok){
-    s.push(rndP('ok'));if(o.streak>=3)s.push(P('streak',o.streak));
+    s.push(rndP('ok'),P('p1'));if(o.streak>=3)s.push(P('streak',o.streak));
     s.push(P('chose'),C(o.chosen+'.'),P('whyYes'),X(o));
   }else{
-    s.push(rndP('ko'),P('chose'),C(o.chosen+'.'),P('whyNot'),X(o),P('correctIs'),C(o.correct+'.'));
+    s.push(rndP('ko'),P('m1'),P('chose'),C(o.chosen+'.'),P('whyNot'),X(o),P('correctIs'),C(o.correct+'.'));
   }
   if(an)s.push(P('anc'),an);
   if(o.flag==='check')s.push(P('check'));
@@ -148,9 +149,7 @@ function answer(o){
 }
 function summary(o){
   if(!ST.fb)return;
-  var s=[P('sum',o.ok,o.tot,o.pct),C(o.verdict)];
-  if(o.wrong)s.push(P('left',o.wrong));
-  say(s);
+  say([P('can',o.score,o.tot,o.pass,o.ok,o.ko,o.sk),o.wrong?P('left',o.wrong):'']);
 }
 
 /* ---------- lecture de l'écran / sélection ---------- */
@@ -238,20 +237,20 @@ function build(){
   sh=host.attachShadow({mode:'open'});
   sh.innerHTML='<style>\
 :host{all:initial}*{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif}\
-.fab{position:fixed;right:16px;bottom:16px;z-index:2147483000;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;font-size:24px;color:#fff;background:linear-gradient(135deg,#6b63ff,#06b6d4);box-shadow:0 8px 26px rgba(0,0,0,.4);transition:transform .2s}\
-.fab:hover{transform:scale(1.08)}.fab.on::after{content:"";position:absolute;right:3px;top:3px;width:12px;height:12px;border-radius:50%;background:#22c55e;border:2px solid #0b1020}\
+.fab{position:fixed;right:16px;bottom:16px;z-index:2147483000;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;font-size:24px;color:#fff;background:linear-gradient(135deg,#2d45b8,#3fc58a);box-shadow:0 8px 26px rgba(0,0,0,.4);transition:transform .2s}\
+.fab:hover{transform:scale(1.08)}.fab.on::after{content:"";position:absolute;right:3px;top:3px;width:12px;height:12px;border-radius:50%;background:#22c55e;border:2px solid #0a1233}\
 .fab.talk{animation:wave 1.1s infinite}@keyframes wave{0%{box-shadow:0 0 0 0 rgba(34,211,238,.7)}100%{box-shadow:0 0 0 22px rgba(34,211,238,0)}}\
-.panel{position:fixed;right:16px;bottom:80px;z-index:2147483000;width:min(340px,calc(100vw - 32px));max-height:calc(100vh - 110px);overflow:auto;background:#151c30;color:#eef1fb;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.55);animation:up .25s both}\
+.panel{position:fixed;right:16px;bottom:80px;z-index:2147483000;width:min(340px,calc(100vw - 32px));max-height:calc(100vh - 110px);overflow:auto;background:#111a47;color:#eef1fb;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.55);animation:up .25s both}\
 @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1}}\
 h3{margin:0 0 4px;font-size:1.05rem}p{margin:0 0 12px;font-size:.82rem;color:#a9b3cc}\
 .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0;font-size:.9rem}\
 label.chk{display:flex;gap:8px;align-items:flex-start;font-size:.86rem;margin:7px 0;cursor:pointer}\
-select,input[type=range]{width:100%}select{background:#0b1020;color:#eef1fb;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px}\
+select,input[type=range]{width:100%}select{background:#0a1233;color:#eef1fb;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px}\
 .sw{position:relative;width:48px;height:26px;flex:none}.sw input{opacity:0;width:100%;height:100%;position:absolute;margin:0;cursor:pointer;z-index:2}\
 .sw i{position:absolute;inset:0;background:#3a4466;border-radius:99px;transition:.2s}.sw i::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}\
-.sw input:checked+i{background:linear-gradient(135deg,#6b63ff,#06b6d4)}.sw input:checked+i::after{transform:translateX(22px)}\
+.sw input:checked+i{background:linear-gradient(135deg,#2d45b8,#3fc58a)}.sw input:checked+i::after{transform:translateX(22px)}\
 .btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}button.b{flex:1 1 auto;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;font-size:.84rem}\
-button.b:hover{background:rgba(255,255,255,.16)}button.b.p{background:linear-gradient(135deg,#6b63ff,#06b6d4);border:0;font-weight:600}\
+button.b:hover{background:rgba(255,255,255,.16)}button.b.p{background:linear-gradient(135deg,#2d45b8,#3fc58a);border:0;font-weight:600}\
 .x{position:absolute;right:10px;top:8px;background:none;border:0;color:#a9b3cc;font-size:18px;cursor:pointer}\
 .warn{background:#38300f;color:#f0c15a;border-radius:10px;padding:8px;font-size:.82rem}\
 :focus-visible{outline:3px solid #22d3ee;outline-offset:2px}\

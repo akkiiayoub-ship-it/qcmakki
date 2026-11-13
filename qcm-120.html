@@ -2,15 +2,17 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<link rel="icon" href="data:,">
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QCM d’entraînement 120 · Promotion interne OFPPT</title>
 <style>
-:root{--bg:#f2f4fb;--card:#fff;--tx:#141c2b;--mut:#5b687c;--bd:#e0e5ef;--pri:#4f46e5;--pri2:#06b6d4;--pri-t:#fff;--acc:#f59e0b;--ok:#15803d;--okbg:#e6f6ec;--ko:#b91c1c;--kobg:#fdecec;--warn:#8a5a00;--warnbg:#fff3d1;--bar:#e3e8f2;--sh:0 8px 28px rgba(40,50,110,.10)}
-@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--card:#151c30;--tx:#e8ecf6;--mut:#97a3ba;--bd:#27314a;--pri:#8b83ff;--pri2:#22d3ee;--pri-t:#0b1020;--acc:#fbbf24;--ok:#4ade80;--okbg:#10301d;--ko:#ff8c8c;--kobg:#3a1b1d;--warn:#f0c15a;--warnbg:#38300f;--bar:#27314a;--sh:0 8px 28px rgba(0,0,0,.35)}}
+:root{--bg:#eef2f7;--card:#fff;--tx:#141c2b;--mut:#5b687c;--bd:#e0e5ef;--pri:#243a9e;--pri2:#2f9e6e;--pri-t:#fff;--acc:#f59e0b;--ok:#15803d;--okbg:#e6f6ec;--ko:#b91c1c;--kobg:#fdecec;--warn:#8a5a00;--warnbg:#fff3d1;--bar:#e3e8f2;--sh:0 8px 28px rgba(40,50,110,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#0a1233;--card:#111a47;--tx:#e8edf8;--mut:#9aa8cc;--bd:#26356f;--pri:#7f95ff;--pri2:#4fd49a;--pri-t:#0a1233;--acc:#fbbf24;--ok:#4ade80;--okbg:#10301d;--ko:#ff8c8c;--kobg:#3a1b1d;--warn:#f0c15a;--warnbg:#38300f;--bar:#27314a;--sh:0 8px 28px rgba(0,0,0,.35)}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
 .blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .blobs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.30;animation:float 18s ease-in-out infinite}
 .blobs i:nth-child(1){width:340px;height:340px;background:var(--pri);top:-80px;left:-60px}
@@ -84,7 +86,7 @@ button.sm{padding:6px 11px;font-size:.85rem}
 .fb.ok{background:var(--okbg);border-left:5px solid var(--ok)}
 .fb.ko{background:var(--kobg);border-left:5px solid var(--ko)}
 .tag{display:inline-block;font-size:.75rem;border-radius:99px;padding:2px 9px;margin-top:6px;background:var(--bar);color:var(--mut)}
-.anc{display:block;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(107,99,255,.12);border:1px solid rgba(107,99,255,.35);font-size:.92em}
+.anc{display:block;margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(63,197,138,.12);border:1px solid rgba(63,197,138,.4);font-size:.92em}
 .tag.check{background:var(--warnbg);color:var(--warn)}
 .row{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:10px}
 .grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
@@ -108,16 +110,48 @@ input.srch{width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(
 .mcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:.9rem}
 .mcard dt{color:var(--mut)}.mcard dd{margin:0}
 .rule{background:var(--warnbg);color:var(--warn);border-radius:12px;padding:10px 12px;font-size:.9rem;margin-bottom:10px}
+
+h1,h2,h3,h4,.big,.fl,.lvl,.q{font-family:Sora,Manrope,system-ui,sans-serif}
+.photo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.photo div{position:absolute;inset:-4%;background:center/cover no-repeat;opacity:0;transition:opacity 1.6s ease;animation:kb 26s ease-in-out infinite alternate;filter:saturate(1.05)}
+.photo div.on{opacity:.22}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,transparent 22%,transparent 70%,var(--bg) 100%)}
+@keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-1.5%)}}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#1b2868,#243a9e 45%,#2f9e6e);background-size:220% 100%}
+.hero .logo{width:54px;height:54px;border-radius:50%;background:#fff;padding:3px;object-fit:cover;box-shadow:0 4px 16px rgba(0,0,0,.35);flex:none;animation:floaty 4s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-4px) rotate(-4deg)}}
+.hero .tl{display:flex;align-items:center;gap:12px}
+.thband{position:relative;display:flex;align-items:center;gap:12px;height:64px;margin:-16px -16px 12px;border-radius:18px 18px 0 0;overflow:hidden;color:#fff;padding:0 16px}
+.thband::before{content:"";position:absolute;inset:0;background:var(--tb) center/cover;animation:kb 18s ease-in-out infinite alternate}
+.thband::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,22,70,.92),rgba(14,22,70,.45))}
+.thband>*{position:relative;z-index:1}
+.thband .em{font-size:1.7rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));animation:floaty 3.5s ease-in-out infinite}
+.thband b{font-family:Sora,sans-serif;font-size:.95rem}
+.thband small{display:block;opacity:.85;font-size:.75rem}
+.theme .th{width:46px;height:46px;border-radius:12px;background:var(--tb) center/cover;display:grid;place-items:center;font-size:1.3rem;flex:none;box-shadow:inset 0 0 0 100px rgba(14,22,70,.5)}
+.score{background:rgba(63,197,138,.16);color:var(--ok);font-weight:700;border-radius:99px;padding:2px 10px}
+.fb.sk{background:var(--bar);border-left:5px solid var(--mut)}
+.final{text-align:center;padding:10px 0;border-radius:16px}
+.final .fl{font-size:1.5rem;font-weight:800;letter-spacing:.06em;animation:pop .6s both}
+.final.win .fl{color:var(--ok)}.final.lose .fl{color:var(--ko)}
+.final.win{background:radial-gradient(300px 120px at 50% 0,rgba(63,197,138,.22),transparent)}
+.final.lose{background:radial-gradient(300px 120px at 50% 0,rgba(239,68,68,.18),transparent)}
+.big small{font-size:1.1rem;-webkit-text-fill-color:var(--mut)}
+.hist{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid var(--bd);font-size:.88rem;align-items:center}
+.pill{border-radius:99px;padding:2px 10px;font-weight:700;font-size:.8rem}
+.pill.okp{background:var(--okbg);color:var(--ok)}.pill.kop{background:var(--kobg);color:var(--ko)}
+.card{backdrop-filter:blur(6px)}
 #fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
 @media(max-width:520px){.dash{grid-template-columns:1fr;justify-items:center;text-align:center}.stats{width:100%}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<div class="photo" aria-hidden="true"><div id="ph1"></div><div id="ph2"></div></div>
 <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap">
   <header class="hero">
-    <h1>QCM d’entraînement 120 · Promotion interne OFPPT<small>Corps formateur · 12 thématiques · situations professionnelles</small></h1>
+    <div class="tl"><img class="logo" src="img/logo.jpg" alt="OFPPT" width="54" height="54"><h1>QCM d’entraînement 120 · Promotion interne OFPPT<small>Corps formateur · 12 thématiques · situations professionnelles</small></h1></div>
     <button id="homeBtn" class="sm" hidden>← Accueil</button>
   </header>
   <main id="app" aria-live="polite"></main>
@@ -138,18 +172,29 @@ const $=s=>document.querySelector(s);
 const app=$('#app'),homeBtn=$('#homeBtn');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LET=['a','b','c','d'];
+const IMG={t1:'salle1',t2:'campus',t3:'salle2',t4:'vr',t5:'salle1',t6:'batiment',t7:'salle2',t8:'vr',t9:'salle2',t10:'salle1',t11:'campus',t12:'batiment',role:'campus',tri:'salle2',obj:'salle1',prep:'salle1',com:'salle2',eva:'batiment',fad:'vr',grp:'campus',cou:'salle2',met:'salle1',app:'batiment',dis:'campus'};
+const EM={t1:'🧠',t2:'🧑‍🎓',t3:'🧩',t4:'⚖️',t5:'❓',t6:'🔁',t7:'🎚️',t8:'🎲',t9:'♿',t10:'🪞',t11:'🎬',t12:'🤝',role:'🎤',tri:'🔺',obj:'🎯',prep:'🗂️',com:'💬',eva:'📊',fad:'💻',grp:'👥',cou:'🏛️',met:'🛠️',app:'🧭',dis:'🔍'};
+const imgSrc=k=>{const n=IMG[k]||k||'batiment';return 'img/'+n+(n==='vr'?'.png':'.jpg')};
+const tbg=k=>`url(${imgSrc(k)})`;
+let phi=0,curPh=null;
+function setPhoto(k){if(curPh===k)return;curPh=k;const a=document.getElementById('ph1'),b=document.getElementById('ph2');if(!a)return;const nx=phi?a:b,pv=phi?b:a;phi^=1;nx.style.backgroundImage=tbg(k);nx.classList.add('on');pv.classList.remove('on')}
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-const KEY=CFG.key;let P={},META={best:0};
+const KEY=CFG.key;let P={},META={best:0,hist:[]};
 try{P=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){P={}}
 try{META=Object.assign(META,JSON.parse(localStorage.getItem(KEY+'-meta')||'{}'))}catch(e){}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P));localStorage.setItem(KEY+'-meta',JSON.stringify(META))}catch(e){}};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P));localStorage.setItem(KEY+'-meta',JSON.stringify(META))}catch(e){}try{window.parent!==window&&window.parent.postMessage({type:'progress'},'*')}catch(e){}};
 function rec(id,ok){const p=P[id]||(P[id]={b:0,n:0,w:0,l:1});p.n++;if(ok){p.b=Math.min(2,p.b+1);p.l=1}else{p.w++;p.b=0;p.l=0}save()}
 const isMastered=id=>P[id]&&P[id].b>=2;
 const isWrong=id=>P[id]&&P[id].l===0;
+const isDone=id=>P[id]&&P[id].l===1;
+const SKIP=-1;
+const pts=(a,c)=>a===undefined||a===SKIP?0:a===c?1:-1;
+const fmt=n=>(n>0?'+':n<0?'−':'')+Math.abs(n);
+const sessScore=s=>s.list.reduce((t,id,i)=>t+pts(s.ans[i],QM[id].a),0);
 const allIds=Q.map(q=>q.id);
 const idsOf=th=>th?Q.filter(q=>q.th===th).map(q=>q.id):allIds;
-const stats=ids=>({n:ids.length,m:ids.filter(isMastered).length,s:ids.filter(i=>P[i]).length,w:ids.filter(isWrong).length});
+const stats=ids=>({n:ids.length,m:ids.filter(isDone).length,s:ids.filter(i=>P[i]).length,w:ids.filter(isWrong).length});
 function pick(ids,n){
   const g=[[],[],[],[]];
   ids.forEach(id=>{const p=P[id];g[!p?1:p.l===0?0:p.b>=2?3:2].push(id)});
@@ -165,7 +210,7 @@ function countUp(el,to,suffix,dur){
 const cv=$('#fx'),cx=cv.getContext('2d');let parts=[],run=false;
 function fit(){cv.width=innerWidth;cv.height=innerHeight}fit();addEventListener('resize',fit);
 function burst(n,x,y){
-  if(reduce)return;const cols=['#4f46e5','#06b6d4','#f59e0b','#ef4444','#22c55e','#a855f7'];
+  if(reduce)return;const cols=['#2d45b8','#3fc58a','#c9ccd3','#e8c26a','#22c55e','#5b72ee'];
   x=x==null?cv.width/2:x;y=y==null?cv.height/3:y;
   for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=3+Math.random()*7;parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,r:3+Math.random()*4,c:cols[i%cols.length],l:90+Math.random()*50,rot:Math.random()*6})}
   if(!run){run=true;requestAnimationFrame(loop)}
@@ -184,15 +229,15 @@ const levelOf=p=>LEVELS.find(l=>p>=l[0])[1];
 
 /* ---------- accueil ---------- */
 function home(){
-  stopTimer();S=null;homeBtn.hidden=true;
+  stopTimer();S=null;homeBtn.hidden=true;setPhoto('batiment');
   const t=stats(allIds),pct=Math.round(100*t.m/t.n),C=2*Math.PI*54;
   const ex=CFG.exams.map((e,i)=>`<button data-a="exam" data-n="${e.n}" data-m="${e.m}" style="animation-delay:${.1+i*.05}s"><span class="ic">⏱️</span><b>${e.label}</b><span class="d">${e.n} questions · ${e.m} min</span></button>`).join('');
   app.innerHTML=`
   <section class="card dash rise">
-    <div class="ring"><svg width="132" height="132" viewBox="0 0 132 132"><defs><linearGradient id="g"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs><circle class="tr" cx="66" cy="66" r="54" fill="none" stroke-width="12"/><circle class="pg" cx="66" cy="66" r="54" fill="none" stroke-width="12" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><b><span id="pc">0</span><small>%</small></b></div>
+    <div class="ring"><svg width="132" height="132" viewBox="0 0 132 132"><defs><linearGradient id="g"><stop offset="0" stop-color="#2d45b8"/><stop offset="1" stop-color="#3fc58a"/></linearGradient></defs><circle class="tr" cx="66" cy="66" r="54" fill="none" stroke-width="12"/><circle class="pg" cx="66" cy="66" r="54" fill="none" stroke-width="12" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><b><span id="pc">0</span><small>%</small></b></div>
     <div><span class="lvl">${levelOf(pct)}</span>
-      <div class="stats"><div class="stat"><b id="s1">0</b><span>maîtrisées / ${t.n}</span></div><div class="stat"><b id="s2">0</b><span>déjà vues</span></div><div class="stat"><b id="s3">0</b><span>à revoir</span></div></div>
-      <div class="best">🔥 Meilleure série : <b>${META.best}</b> · maîtrisée = 2 bonnes réponses d’affilée</div></div>
+      <div class="stats"><div class="stat"><b id="s1">0</b><span>réussies / ${t.n}</span></div><div class="stat"><b id="s2">0</b><span>déjà vues</span></div><div class="stat"><b id="s3">0</b><span>à revoir</span></div></div>
+      <div class="best">🔥 Meilleure série : <b>${META.best}</b> · réussie = ta dernière réponse est juste · note canadienne : +1 juste, −1 fausse, 0 sans réponse</div></div>
   </section>
   <div class="modes">
     <button class="pri" data-a="practice" style="animation-delay:.05s"><span class="ic">🎯</span><b>Entraînement</b><span class="d">10 questions, correction immédiate</span></button>
@@ -203,13 +248,14 @@ function home(){
   </div>
   <div class="card rise"><b>Par thème</b>
     ${Object.keys(THEMES).map(k=>{const s=stats(idsOf(k)),p=Math.round(100*s.m/s.n);return`
-    <div class="theme"><div class="nm"><b>${esc(THEMES[k])}</b><small>${s.m}/${s.n} maîtrisées${s.w?` · ${s.w} à revoir`:''}</small><div class="bar"><i style="width:${p}%"></i></div></div>
+    <div class="theme"><div class="th" style="--tb:${tbg(k)}">${EM[k]||'📘'}</div><div class="nm"><b>${esc(THEMES[k])}</b><small>${s.m}/${s.n} réussies${s.w?` · ${s.w} à revoir`:''}</small><div class="bar"><i style="width:${p}%"></i></div></div>
     <button class="sm" data-a="practice" data-th="${k}">Pratiquer</button><button class="sm" data-a="cards" data-th="${k}">Fiches</button></div>`}).join('')}
   </div>
+  ${(META.hist&&META.hist.length)?`<div class="card rise"><b>Dernières sessions</b>${META.hist.slice(-5).reverse().map(h=>`<div class="hist"><span>${esc(h.d)} · ${esc(h.m)}</span><span class="pill ${h.p?'okp':'kop'}">${fmt(h.s)} / ${h.t} · ${h.p?'RÉUSSI':'RATÉ'}</span></div>`).join('')}</div>`:''}
   <p><button id="reset" class="sm">Réinitialiser ma progression</button></p>`;
   app.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>start(b.dataset.a,b.dataset.th,+b.dataset.n,+b.dataset.m));
   const r=$('#reset');let armed=false;
-  r.onclick=()=>{if(!armed){armed=true;r.textContent='Cliquer à nouveau pour confirmer';return}P={};META.best=0;save();home()};
+  r.onclick=()=>{if(!armed){armed=true;r.textContent='Cliquer à nouveau pour confirmer';return}P={};META.best=0;META.hist=[];save();home()};
   requestAnimationFrame(()=>requestAnimationFrame(()=>{const pg=app.querySelector('.pg');pg.style.strokeDashoffset=C*(1-pct/100)}));
   countUp($('#pc'),pct);countUp($('#s1'),t.m);countUp($('#s2'),t.s);countUp($('#s3'),t.w);
 }
@@ -240,11 +286,13 @@ function tick(){
 function showQ(){
   const s=S,q=QM[s.list[s.i]],exam=s.mode==='exam';
   if(!s.ord[s.i])s.ord[s.i]=shuffle([0,1,2,3]);
+  setPhoto(q.th);
   const ord=s.ord[s.i],ans=s.ans[s.i],done=!exam&&ans!==undefined,last=s.i===s.list.length-1;
   app.innerHTML=`
   <div class="card ${done?'':'rise'}">
+    <div class="thband" style="--tb:${tbg(q.th)}"><span class="em">${EM[q.th]||'📘'}</span><div><b>${esc(THEMES[q.th])}</b><small>Question ${s.i+1} sur ${s.list.length}</small></div></div>
     <div class="meta"><span>Question ${s.i+1}/${s.list.length} · ${esc(THEMES[q.th])}</span>
-      ${exam?`<span class="timer" id="tm"></span>`:`<span>${s.streak>1?`<span class="streak">🔥 ${s.streak}</span> `:''}${esc(q.s)}</span>`}</div>
+      ${exam?`<span class="timer" id="tm"></span>`:`<span><span class="score" title="Note canadienne en cours">Note ${fmt(sessScore(s))}</span> ${s.streak>1?`<span class="streak">🔥 ${s.streak}</span> `:''}${esc(q.s)}</span>`}</div>
     <div class="bar" style="margin-bottom:10px"><i style="width:${100*(s.i+(done?1:0))/s.list.length}%"></i></div>
     <div class="q">${esc(q.q)}</div>
     <div id="opts">${ord.map((k,pos)=>{
@@ -252,17 +300,18 @@ function showQ(){
       if(done){if(k===q.a)cls='ok';else if(k===ans)cls='ko'}else if(exam&&ans===k)cls='sel';
       const mark=done?(k===q.a?'✓':k===ans?'✗':LET[pos]):LET[pos];
       return`<button class="opt ${cls}" data-k="${k}" ${done?'disabled':''}><span class="k">${mark}</span><span>${esc(q.o[k])}</span></button>`}).join('')}</div>
-    ${done?`<div class="fb ${ans===q.a?'ok':'ko'}" role="status"><b>${ans===q.a?'Bonne réponse !':'Pas tout à fait.'}</b> ${ans===q.a?'':`Ton choix : <s>${esc(q.o[ans])}</s> ✗<br>Bonne réponse : <b>${esc(q.o[q.a])}</b>.<br>`}${esc(q.e)}${(CFG.anch&&CFG.anch[q.th])?`<br><span class="anc">🔗 <b>À ancrer :</b> ${esc(CFG.anch[q.th][0])}</span>`:''}
+    ${done?`<div class="fb ${ans===q.a?'ok':ans===SKIP?'sk':'ko'}" role="status"><b>${ans===q.a?'Bonne réponse ! +1 point':ans===SKIP?'Sans réponse : 0 point':'Pas tout à fait. −1 point'}</b> ${ans===q.a?'':ans===SKIP?'Bonne réponse : <b>'+esc(q.o[q.a])+'</b>.<br>':`Ton choix : <s>${esc(q.o[ans])}</s> ✗<br>Bonne réponse : <b>${esc(q.o[q.a])}</b>.<br>`}${esc(q.e)}${(CFG.anch&&CFG.anch[q.th])?`<br><span class="anc">🔗 <b>À ancrer :</b> ${esc(CFG.anch[q.th][0])}</span>`:''}
       ${q.c==='check'?'<br><span class="tag check">⚠ réponse à vérifier avec ton cours</span>':''}${q.c==='sheet'?'<br><span class="tag">coche relevée sur ta photo</span>':''}</div>`:''}
     <div class="row">
       ${exam?`<button id="prev" ${s.i?'':'disabled'}>← Précédente</button>`:'<span></span>'}
-      ${exam||done?`<button class="pri" id="next">${last?(exam?'Terminer l’examen':'Voir le bilan'):'Suivante →'}</button>`:`<span class="note">Touches 1-4 ou a-d, puis Entrée</span>`}
+      ${exam||done?`<button class="pri" id="next">${last?(exam?'Terminer l’examen':'Voir le bilan'):'Suivante →'}</button>`:`<span class="note"><button class="sm" id="skip">Passer · 0 point</button> Touches 1-4 ou a-d</span>`}
     </div>
     ${exam?`<div class="grid">${s.list.map((_,i)=>`<button class="${s.ans[i]!==undefined?'done':''} ${i===s.i?'cur':''}" data-g="${i}" aria-label="Question ${i+1}">${i+1}</button>`).join('')}</div>`:''}
   </div>`;
   app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k,b));
   if(co()&&ans===undefined){const qq=!!s.q1;s.q1=false;Coach.question({n:s.i+1,total:s.list.length,theme:THEMES[q.th],text:q.q,options:ord.map(k=>q.o[k]),queue:qq})}
   const n=$('#next');if(n){n.onclick=next;if(done)n.focus()}
+  const sk=$('#skip');if(sk)sk.onclick=skip;
   const p=$('#prev');if(p)p.onclick=()=>{s.i--;showQ()};
   app.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{s.i=+b.dataset.g;showQ()});
   if(exam)tick();
@@ -276,7 +325,12 @@ function choose(k){
     if(co())Coach.answer({ok,chosen:q.o[k],correct:q.o[q.a],expl:q.e,x:q.x,anch:CFG.anch&&CFG.anch[q.th],flag:q.c,streak:s.streak});
     if(ok){const o=app.querySelector('.opt.ok');if(o){const r=o.getBoundingClientRect();burst(s.streak%5===0?60:14,r.left+r.width/2,r.top)}}
     const st=app.querySelector('.streak');if(st&&s.streak>1)st.classList.add('hot');
-  }else{s.ans[s.i]=k;showQ()}
+  }else{s.ans[s.i]=(s.ans[s.i]===k)?undefined:k;showQ()}
+}
+function skip(){
+  const s=S,q=QM[s.list[s.i]];if(s.ans[s.i]!==undefined)return;
+  s.ans[s.i]=SKIP;s.streak=0;showQ();
+  if(co())Coach.answer({skip:true,correct:q.o[q.a],expl:q.e,x:q.x,anch:CFG.anch&&CFG.anch[q.th]});
 }
 function next(){if(S.i<S.list.length-1){S.i++;showQ()}else finish()}
 
@@ -284,28 +338,31 @@ function next(){if(S.i<S.list.length-1){S.i++;showQ()}else finish()}
 function finish(){
   stopTimer();
   const s=S,exam=s.mode==='exam';
-  if(exam)s.list.forEach((id,i)=>{if(s.ans[i]!==undefined)rec(id,s.ans[i]===QM[id].a)});
+  if(exam)s.list.forEach((id,i)=>{if(s.ans[i]!==undefined&&s.ans[i]!==SKIP)rec(id,s.ans[i]===QM[id].a)});
   const res=s.list.map((id,i)=>({q:QM[id],a:s.ans[i]}));
-  const ok=res.filter(r=>r.a===r.q.a).length,tot=res.length,pct=Math.round(100*ok/tot);
+  const ok=res.filter(r=>r.a===r.q.a).length,ko=res.filter(r=>r.a!==undefined&&r.a!==SKIP&&r.a!==r.q.a).length,sk=res.length-ok-ko,tot=res.length,pct=Math.round(100*ok/tot);
+  const score=ok-ko,pass=score>tot/2;
   const wrong=res.filter(r=>r.a!==r.q.a);
-  const verdict=pct>=80?'Excellent, tu maîtrises ! 🎉':pct>=60?'Correct, continue sur les erreurs. 💪':'À retravailler : reprends les erreurs ci-dessous. 📚';
+  const verdict=pass?'Résultat final : tu as réussi !':'Résultat final : tu as été raté.';
+  try{META.hist=(META.hist||[]).concat([{d:new Date().toLocaleDateString('fr-FR'),m:({practice:'Entraînement',exam:'Examen',errors:'Erreurs',cards:'Fiches'})[s.mode]||s.mode,s:score,t:tot,p:pass?1:0}]).slice(-20);save()}catch(e){}
   app.innerHTML=`
   <div class="card rise"><div class="meta"><span>${exam?'Résultat de l’examen':'Bilan de la session'}</span></div>
-    <div class="big"><span id="sc">0</span>/${tot} <span style="font-size:1.1rem;-webkit-text-fill-color:var(--mut)">(<span id="sp">0</span> %)</span></div>
-    <div class="bar" style="margin:6px 0 10px"><i style="width:${pct}%"></i></div>
-    <p style="text-align:center;margin:0">${verdict}</p>
+    <div class="final ${pass?'win':'lose'}"><div class="fl">${pass?'RÉUSSI ✅':'RATÉ ❌'}</div><div class="big"><span id="sc">0</span><small> / ${tot}</small></div>
+      <div class="note" style="text-align:center">Note canadienne : <b>${ok}</b> juste${ok>1?'s':''} (+${ok}) · <b>${ko}</b> fausse${ko>1?'s':''} (−${ko}) · <b>${sk}</b> sans réponse (0)<br>Seuil de réussite : plus de ${tot/2} points sur ${tot}</div></div>
+    <div class="bar" style="margin:10px 0"><i style="width:${Math.max(0,Math.round(100*score/tot))}%"></i></div>
+    <p style="text-align:center;margin:0"><b>${verdict}</b></p>
     <div class="row" style="justify-content:center"><button class="pri" id="again">Recommencer</button><button id="gohome">Accueil</button></div>
   </div>
   ${wrong.length?`<div class="card rise"><b>À revoir (${wrong.length})</b>${wrong.map(r=>`
     <div class="err"><div class="note">${esc(THEMES[r.q.th])}</div><div><b>${esc(r.q.q)}</b></div>
-    <div style="color:var(--ko)">✗ ${r.a!==undefined?'Ta réponse : '+esc(r.q.o[r.a]):'Sans réponse'}</div>
+    <div style="color:var(--ko)">✗ ${r.a!==undefined&&r.a!==SKIP?'Ta réponse : '+esc(r.q.o[r.a])+' (−1)':'Sans réponse (0)'}</div>
     <div style="color:var(--ok)">✓ ${esc(r.q.o[r.q.a])}</div><div class="note">${esc(r.q.e)}</div>
     ${r.q.c==='check'?'<span class="tag check">⚠ à vérifier avec ton cours</span>':''}</div>`).join('')}</div>`:''}`;
   $('#again').onclick=()=>start(s.mode,s.th,s.n,s.m);$('#gohome').onclick=home;
   if(window.Coach&&wrong.length){const hb=document.createElement('button');hb.id='hear';hb.textContent='🔊 Écouter les corrections';hb.onclick=()=>Coach.say(wrong.map(r=>[Coach.P('qn',wrong.indexOf(r)+1,wrong.length),Coach.C(r.q.q+'.'),Coach.P('correctIs'),Coach.C(r.q.o[r.q.a]+'.'),Coach.P('why'),(Coach.lang!=='fr'&&r.q.x)?{l:'ar',t:r.q.x[Coach.lang==='ar'?0:1]}:Coach.C(r.q.e)]),{force:true});app.querySelector('.row').appendChild(hb)}
-  if(co())Coach.summary({ok,tot,pct,verdict:verdict,wrong:wrong.length});
-  countUp($('#sc'),ok);countUp($('#sp'),pct);
-  if(pct>=80)setTimeout(()=>{burst(140);setTimeout(()=>burst(90,cv.width*.2,cv.height*.4),300);setTimeout(()=>burst(90,cv.width*.8,cv.height*.4),500)},350);
+  if(co())Coach.summary({ok,ko,sk,tot,pct,score,pass,verdict:verdict,wrong:wrong.length});
+  countUp($('#sc'),Math.abs(score),'');if(score<0){const e=$('#sc');setTimeout(()=>e.textContent='−'+Math.abs(score),1000)}
+  if(pass)setTimeout(()=>{burst(140);setTimeout(()=>burst(90,cv.width*.2,cv.height*.4),300);setTimeout(()=>burst(90,cv.width*.8,cv.height*.4),500)},350);
 }
 
 /* ---------- fiches ---------- */
